@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+        <NoWarn>1701;1702;1591;1572;1573;NU1608</NoWarn>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Remove="nlog.mysql.config" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <EmbeddedResource Include="nlog.mysql.config" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <FrameworkReference Include="Microsoft.AspNetCore.App" />
+        <PackageReference Include="Shashlik.Kernel" Version="0.1.0-preview-00008" />
+        <PackageReference Include="Shashlik.EfCore" Version="0.1.0-preview-00008" />
+        <PackageReference Include="Shashlik.RazorFormat" Version="0.1.0-preview-00008" />
+
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.9" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.9">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="NLog.MailKit" Version="3.2.0" />
+        <PackageReference Include="NLog.Web.AspNetCore" Version="4.9.2" />
+        <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.2.2" />
+        <PackageReference Include="Shashlik.Utils" Version="0.1.0-preview-00008" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Jinkong.NLogger\Jinkong.NLogger.csproj" />
+    </ItemGroup>
+</Project>
