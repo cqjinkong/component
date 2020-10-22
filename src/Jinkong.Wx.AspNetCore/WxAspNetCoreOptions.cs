@@ -1,12 +1,12 @@
 ﻿using Shashlik.Kernel.Autowired.Attributes;
 
-namespace Jinkong.Wx
+namespace Jinkong.Wx.AspNetCore
 {
     /// <summary>
     /// wx api参数
     /// </summary>
     [AutoOptions("Jinkong.Wx.AspNetCore")]
-    public class WxApiOptions
+    public class WxAspNetCoreOptions
     {
 
         /// <summary>

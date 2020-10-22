@@ -1,15 +1,15 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using System;
+using System.IO;
+using Jinkong.Wx.AspNetCore.Notifies;
+using Microsoft.AspNetCore.Http;
 using Senparc.NeuChar;
 using Senparc.NeuChar.App.AppStore;
 using Senparc.NeuChar.Entities;
 using Senparc.Weixin.MP.Entities.Request;
 using Senparc.Weixin.MP.MessageContexts;
 using Senparc.Weixin.MP.MessageHandlers;
-using System;
-using System.IO;
-using Jinkong.Wx.Http.Notifies;
 
-namespace Jinkong.Wx
+namespace Jinkong.Wx.AspNetCore
 {
     //TODO: 使用条件属性进行筛选
 

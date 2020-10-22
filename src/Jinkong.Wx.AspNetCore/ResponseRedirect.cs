@@ -1,6 +1,6 @@
 ﻿using Senparc.NeuChar.Entities;
 
-namespace Jinkong.Wx
+namespace Jinkong.Wx.AspNetCore
 {
     /// <summary>
     /// 将响应进行转发

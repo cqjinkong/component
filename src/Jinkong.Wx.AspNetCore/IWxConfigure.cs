@@ -1,7 +1,7 @@
 ﻿using System;
 using Senparc.CO2NET.RegisterServices;
 
-namespace Jinkong.Wx.Http
+namespace Jinkong.Wx.AspNetCore
 {
     /// <summary>
     /// 微信配置,自动配置

@@ -8,17 +8,17 @@ using Shashlik.AspNetCore;
 using Shashlik.Kernel;
 using Shashlik.Kernel.Autowired;
 
-namespace Jinkong.Wx.Http
+namespace Jinkong.Wx.AspNetCore
 {
     public class WxHttpConfigure : IAutowiredConfigureAspNetCore
     {
-        public WxHttpConfigure(IOptions<WxOptions> wxOptions, IOptions<WxApiOptions> wxApiOptions)
+        public WxHttpConfigure(IOptions<WxOptions> wxOptions, IOptions<WxAspNetCoreOptions> wxApiOptions)
         {
             WxOptions = wxOptions;
             WxApiOptions = wxApiOptions;
         }
 
-        private IOptions<WxApiOptions> WxApiOptions { get; set; }
+        private IOptions<WxAspNetCoreOptions> WxApiOptions { get; set; }
         private IOptions<WxOptions> WxOptions { get; set; }
 
         public void Configure(IApplicationBuilder app, IKernelConfigure kernelConfigure)

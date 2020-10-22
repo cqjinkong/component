@@ -2,11 +2,10 @@
 using CSRedis;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
-using Senparc.CO2NET;
 using Senparc.CO2NET.RegisterServices;
 using Senparc.Weixin.MP;
 
-namespace Jinkong.Wx.Http
+namespace Jinkong.Wx.AspNetCore
 {
     /// <summary>
     /// 微信默认注册配置

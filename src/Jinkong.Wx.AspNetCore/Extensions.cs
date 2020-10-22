@@ -4,11 +4,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Senparc.CO2NET;
-using Senparc.CO2NET.AspNet;
 using Senparc.CO2NET.AspNet.HttpUtility;
 using Senparc.NeuChar.Entities;
 using Senparc.Weixin.MP;
@@ -18,7 +15,7 @@ using Senparc.Weixin.MP.Helpers;
 using Shashlik.Utils.Extensions;
 using Shashlik.Utils.Helpers;
 
-namespace Jinkong.Wx.Http
+namespace Jinkong.Wx.AspNetCore
 {
     public static class Extensions
     {
@@ -29,7 +26,7 @@ namespace Jinkong.Wx.Http
         /// <returns></returns>
         public static void UseWxApi(this IApplicationBuilder app)
         {
-            var options = app.ApplicationServices.GetRequiredService<IOptions<WxApiOptions>>().Value;
+            var options = app.ApplicationServices.GetRequiredService<IOptions<WxAspNetCoreOptions>>().Value;
 
             if (!options.WxJsSdk.IsNullOrWhiteSpace()) app.Map(options.WxJsSdk, r => r.Run(WxJsSdk));
             if (!options.OAuthUrl.IsNullOrWhiteSpace()) app.Map(options.OAuthUrl, r => r.Run(OAuthUrl));
@@ -142,7 +139,7 @@ namespace Jinkong.Wx.Http
                     httpContext.Request.Query.TryGetValue("nonce", out var nonce);
                     httpContext.Request.Query.TryGetValue("msg_signature", out var msgSignature);
                     var wxSettings = httpContext.RequestServices.GetRequiredService<IOptions<WxOptions>>().Value;
-                    var wxApiOptions = httpContext.RequestServices.GetRequiredService<IOptions<WxApiOptions>>().Value;
+                    var wxApiOptions = httpContext.RequestServices.GetRequiredService<IOptions<WxAspNetCoreOptions>>().Value;
 
                     var defaultMp = wxSettings.GetDefaultMp();
                     PostModel postModel = new PostModel

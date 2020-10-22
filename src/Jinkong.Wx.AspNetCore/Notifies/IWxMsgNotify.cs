@@ -1,10 +1,9 @@
 ﻿using Senparc.NeuChar.Entities;
-using Senparc.Weixin.MP.Entities;
 
-namespace Jinkong.Wx.Http.Notifies
+namespace Jinkong.Wx.AspNetCore.Notifies
 {
-    public interface IWxEventNotify<TM> : Shashlik.Kernel.Dependency.ITransient
-        where TM : class, IRequestMessageEventBase
+    public interface IWxMsgNotify<TM> : Shashlik.Kernel.Dependency.ITransient
+        where TM : class, IRequestMessageBase
     {
         /// <summary>
         /// 处理推送的消息,如果不需要返回任何信息到微信,直接返回null
