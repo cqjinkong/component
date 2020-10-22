@@ -1,7 +1,4 @@
 ﻿using Senparc.NeuChar.Entities;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Jinkong.Wx
 {

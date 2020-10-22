@@ -26,6 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Jinkong.Senparc.CsRedis\Jinkong.Senparc.CsRedis.csproj" />
     <ProjectReference Include="..\Jinkong.Wx\Jinkong.Wx.csproj" />
   </ItemGroup>
 </Project>

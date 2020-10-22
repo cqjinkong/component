@@ -1,14 +1,12 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Senparc.CO2NET;
 using Senparc.CO2NET.AspNet;
 using Shashlik.AspNetCore;
 using Shashlik.Kernel;
 using Shashlik.Kernel.Autowired;
-using Shashlik.Utils.Extensions;
 
 namespace Jinkong.Wx.Http
 {

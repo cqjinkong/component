@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Shashlik.Kernel.Autowired.Attributes;
+﻿using Shashlik.Kernel.Autowired.Attributes;
 
 namespace Jinkong.Wx
 {
@@ -11,6 +8,7 @@ namespace Jinkong.Wx
     [AutoOptions("Jinkong.Wx.AspNetCore")]
     public class WxApiOptions
     {
+
         /// <summary>
         /// 获取jssdk 配置对象
         /// </summary>

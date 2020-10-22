@@ -4,7 +4,7 @@ using Senparc.Weixin.MP.Entities;
 namespace Jinkong.Wx.Http.Notifies
 {
     public interface IWxEventNotify<TM> : Shashlik.Kernel.Dependency.ITransient
-         where TM : class, IRequestMessageEventBase
+        where TM : class, IRequestMessageEventBase
     {
         /// <summary>
         /// 处理推送的消息,如果不需要返回任何信息到微信,直接返回null
