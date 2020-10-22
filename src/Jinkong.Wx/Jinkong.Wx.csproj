@@ -12,10 +12,10 @@
     <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="3.1.9" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.9" />
 
-    <PackageReference Include="Senparc.Weixin" Version="6.7.502" />
-    <PackageReference Include="Senparc.Weixin.MP" Version="16.10.502.3" />
-    <PackageReference Include="Senparc.Weixin.TenPay" Version="1.5.502.4" />
-    <PackageReference Include="Senparc.Weixin.WxOpen" Version="3.8.502.1" />
+    <PackageReference Include="Senparc.Weixin" Version="6.7.600" />
+    <PackageReference Include="Senparc.Weixin.MP" Version="16.10.601" />
+    <PackageReference Include="Senparc.Weixin.TenPay" Version="1.5.600" />
+    <PackageReference Include="Senparc.Weixin.WxOpen" Version="3.8.601" />
     <PackageReference Include="Shashlik.Kernel" Version="0.1.0-preview-00011" />
     <PackageReference Include="Shashlik.RazorFormat" Version="0.1.0-preview-00011" />
   </ItemGroup>
