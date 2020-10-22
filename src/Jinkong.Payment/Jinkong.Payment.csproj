@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Jinkong.Payment.Abstract\Jinkong.Payment.Abstract.csproj" />
+    <ProjectReference Include="..\Jinkong.Wx.AspNetCore\Jinkong.Wx.AspNetCore.csproj" />
+    <ProjectReference Include="..\Jinkong.Wx\Jinkong.Wx.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -20,9 +20,9 @@
 
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
-    <PackageReference Include="Shashlik.Kernel" Version="0.1.0-preview-00009" />
-    <PackageReference Include="Shashlik.AspNetCore" Version="0.1.0-preview-00009" />
-    <PackageReference Include="Shashlik.Utils" Version="0.1.0-preview-00009" />
+    <PackageReference Include="Shashlik.Kernel" Version="0.1.0-preview-00011" />
+    <PackageReference Include="Shashlik.AspNetCore" Version="0.1.0-preview-00011" />
+    <PackageReference Include="Shashlik.Utils" Version="0.1.0-preview-00011" />
   </ItemGroup>
 
   <ItemGroup>

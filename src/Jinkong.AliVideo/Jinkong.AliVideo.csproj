@@ -8,10 +8,10 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Shashlik.Kernel" Version="0.1.0-preview-00009" />
+        <PackageReference Include="Shashlik.Kernel" Version="0.1.0-preview-00011" />
         <PackageReference Include="aliyun-net-sdk-vod" Version="2.15.10" />
         <PackageReference Include="Aliyun.OSS.SDK.NetCore" Version="2.10.0" />
-        <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="3.1.5" />
+        <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="3.1.9" />
     </ItemGroup>
 
     <ItemGroup>

@@ -84,7 +84,4 @@
   <!--<ItemGroup Condition=" '$(TargetFramework)' == 'netstandard1.6' ">
     <PackageReference Include="protobuf-net" Version="2.1.0" />
   </ItemGroup>-->
-  <ItemGroup>
-    <ProjectReference Include="..\Jinkong.Redis\Jinkong.Redis.csproj" />
-  </ItemGroup>
 </Project>

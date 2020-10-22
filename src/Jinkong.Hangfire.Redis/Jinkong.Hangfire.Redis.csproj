@@ -7,8 +7,8 @@
   <ItemGroup>
     <PackageReference Include="Hangfire.AspNetCore" Version="1.7.11" />
     <PackageReference Include="HangFire.Core" Version="1.7.11" />
-    <PackageReference Include="Shashlik.Kernel" Version="0.1.0-preview-00009" />
-    <PackageReference Include="Shashlik.Redis" Version="0.1.0-preview-00009" />
+    <PackageReference Include="Shashlik.Kernel" Version="0.1.0-preview-00011" />
+    <PackageReference Include="Shashlik.Redis" Version="0.1.0-preview-00011" />
   </ItemGroup>
 
   <ItemGroup>
