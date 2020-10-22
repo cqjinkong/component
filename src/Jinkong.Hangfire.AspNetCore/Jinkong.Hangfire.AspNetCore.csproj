@@ -1,18 +1,19 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
-  </PropertyGroup>
+    <Import Project="..\..\common.xml"/>
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Hangfire.AspNetCore" Version="1.7.17" />
-    <PackageReference Include="HangFire.Core" Version="1.7.17" />
-    <PackageReference Include="Shashlik.AspNetCore" Version="0.1.0-preview-00011" />
-  </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Hangfire.AspNetCore" Version="1.7.17"/>
+        <PackageReference Include="HangFire.Core" Version="1.7.17"/>
+        <PackageReference Include="Shashlik.AspNetCore" Version="0.1.0-preview-00011"/>
+    </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Hangfire.Redis.CSRedisCore\Hangfire.Redis.CSRedisCore\Hangfire.Redis.CSRedisCore.csproj" />
-    <ProjectReference Include="..\Jinkong.Hangfire\Jinkong.Hangfire.csproj" />
-  </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\Hangfire.Redis.CSRedisCore\Hangfire.Redis.CSRedisCore\Hangfire.Redis.CSRedisCore.csproj"/>
+        <ProjectReference Include="..\Jinkong.Hangfire\Jinkong.Hangfire.csproj"/>
+    </ItemGroup>
 
 </Project>

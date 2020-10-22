@@ -1,0 +1,10 @@
+<Project>
+  <PropertyGroup>    
+    <PackageProjectUrl>https://github.com/cqjinkong/component</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/cqjinkong/component/blob/main/LICENSE</PackageLicenseUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/cqjinkong/component</RepositoryUrl>
+    <PackageTags>jinkong</PackageTags>
+    <Authors>cqjinkong</Authors>
+  </PropertyGroup>
+</Project>

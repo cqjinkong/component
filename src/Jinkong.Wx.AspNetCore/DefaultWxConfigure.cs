@@ -15,7 +15,7 @@ namespace Jinkong.Wx.AspNetCore
         public void Configure(IRegisterService registerService, IServiceProvider serviceProvider)
         {        
             // 缓存配置
-            Jinkong.Senparc.CsRedis.Register.UseKeyValueRedisNow(serviceProvider.GetService<CSRedisClient>());
+            Senparc.CsRedis.Register.UseCsRedisCache(serviceProvider.GetService<CSRedisClient>());
 
             var appOptions = serviceProvider.GetRequiredService<IOptions<WxOptions>>();
             foreach (var item in appOptions.Value.WxAppSettings)
