@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using Shashlik.Kernel.Dependency;
+
+// ReSharper disable CheckNamespace
 
 namespace Jinkong.Version
 {
-    public interface IVersion : Jinkong.Kernel.Dependency.ITransient
+    public interface IVersion : ITransient
     {
         /// <summary>
         /// 优先级

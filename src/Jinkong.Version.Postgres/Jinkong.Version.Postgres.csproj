@@ -5,10 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Jinkong.Kernel\Jinkong.Kernel.csproj" />
-    <ProjectReference Include="..\Jinkong.Redis\Jinkong.Redis.csproj" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.5" />
-
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.9" />
+    <PackageReference Include="Shashlik.Redis" Version="0.1.0-preview-00011" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="3.1.4" />
 
 

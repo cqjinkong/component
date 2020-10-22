@@ -55,6 +55,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jinkong.Payment.Abstract", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jinkong.Payment.EfStore", "src\Jinkong.Payment.EfStore\Jinkong.Payment.EfStore.csproj", "{9008FB3B-DDD0-4405-B12E-C69673C86669}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jinkong.Version.Postgres", "src\Jinkong.Version.Postgres\Jinkong.Version.Postgres.csproj", "{A545BA41-BF41-470F-BAE1-D8EEC409DB9F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -153,6 +155,10 @@ Global
 		{9008FB3B-DDD0-4405-B12E-C69673C86669}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9008FB3B-DDD0-4405-B12E-C69673C86669}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9008FB3B-DDD0-4405-B12E-C69673C86669}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A545BA41-BF41-470F-BAE1-D8EEC409DB9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A545BA41-BF41-470F-BAE1-D8EEC409DB9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A545BA41-BF41-470F-BAE1-D8EEC409DB9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A545BA41-BF41-470F-BAE1-D8EEC409DB9F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

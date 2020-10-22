@@ -1,6 +1,4 @@
-﻿using Jinkong.Kernel;
-using Jinkong.Utils.Extensions;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.DependencyInjection;
 using Npgsql;
@@ -9,37 +7,41 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
 using System.Linq;
-using System.Text;
-using Jinkong.Redis;
+using Microsoft.Extensions.Logging;
+using Shashlik.Redis;
+using Shashlik.Utils.Extensions;
+
+// ReSharper disable CheckNamespace
 
 namespace Jinkong.Version
 {
     public static class Extension
     {
-
-        static readonly string locker = "GUC_VERSION_UPDATING";
+        private const string LockKey = "VERSION_UPDATING";
 
         /// <summary>
         /// 执行版本更新,使用ef core上下文自动启用事务执行更新
         /// </summary>
-        /// <param name="service"></param>
-        public static IKernelConfig UseVersionManagement<TDbContext>(this IKernelConfig kernelConfig)
+        /// <param name="serviceProvider"></param>
+        public static IServiceProvider UseVersionManagement<TDbContext>(this IServiceProvider serviceProvider)
             where TDbContext : DbContext
         {
-            using var locking = RedisHelper.Instance.Locking(locker, 60);
-            using (var scope = kernelConfig.ServiceProvider.CreateScope())
+            using var locking = RedisHelper.Instance.Locking(LockKey, 60);
+            using (var scope = serviceProvider.CreateScope())
             using (var initDbContext = scope.ServiceProvider.GetService<TDbContext>())
                 // 初始化表
                 InitDb(initDbContext.Database.GetDbConnection());
 
-            using (var scope = kernelConfig.ServiceProvider.CreateScope())
+            using (var scope = serviceProvider.CreateScope())
             {
                 using (var dbContext = scope.ServiceProvider.GetService<TDbContext>())
                 {
-
-                    var versions = scope.ServiceProvider.GetServices<IVersion>()?.OrderBy(r => r.Priority)?.ThenBy(r => r.VersionId)?.ToList();
+                    var versions = scope.ServiceProvider.GetServices<IVersion>()
+                        ?.OrderBy(r => r.Priority)
+                        .ThenBy(r => r.VersionId)
+                        .ToList();
                     if (versions.IsNullOrEmpty())
-                        return kernelConfig;
+                        return serviceProvider;
 
                     var conn = dbContext.Database.GetDbConnection();
                     if (conn.State == ConnectionState.Closed)
@@ -48,56 +50,64 @@ namespace Jinkong.Version
                     var versionIds = GetUpdatedVersions(conn);
                     if (versions.HasRepeat(r => r.VersionId))
                         throw new Exception("存在重复的VersionId");
-                    var notUpdates = versions.Where(r => !versionIds.Contains(r.VersionId));
-                    if (notUpdates.IsNullOrEmpty()) return kernelConfig;
+                    var notUpdates = versions!.Where(r => !versionIds.Contains(r.VersionId)).ToList();
+                    if (notUpdates.IsNullOrEmpty()) return serviceProvider;
 
+                    var logger = serviceProvider.GetRequiredService<ILoggerFactory>()
+                        .CreateLogger("Jinkong.Version.Postgres");
                     using (var transaction = dbContext.Database.BeginTransaction())
                     {
                         try
                         {
                             foreach (var item in notUpdates)
                             {
-                                Console.WriteLine($"开始更新版本:{item.VersionId}");
+                                logger.LogInformation($"开始更新版本:{item.VersionId}");
                                 item.Update().Wait();
-                                Console.WriteLine($"版本更新完成:{item.VersionId}");
+                                logger.LogInformation($"版本更新完成:{item.VersionId}");
                             }
-                            InsertUpdateRecord(conn, transaction.GetDbTransaction(), notUpdates.ToDictionary(r => r.VersionId, r => r.Desc));
+
+                            InsertUpdateRecord(conn, transaction.GetDbTransaction(),
+                                notUpdates.ToDictionary(r => r.VersionId, r => r.Desc));
 
                             transaction.Commit();
 
-                            return kernelConfig;
+                            return serviceProvider;
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
                             transaction.Rollback();
-                            throw ex;
+                            throw;
                         }
                     }
                 }
             }
-
         }
 
         /// <summary>
         /// 执行版本更新,使用ef core 上下文事务
         /// </summary>
-        /// <param name="service"></param>
-        public static IKernelConfig UseVersionManagement<TDbContext>(this IKernelConfig kernelConfig, IDbContextTransaction transaction)
+        /// <param name="serviceProvider"></param>
+        /// <param name="transaction"></param>
+        public static IServiceProvider UseVersionManagement<TDbContext>(this IServiceProvider serviceProvider,
+            IDbContextTransaction transaction)
             where TDbContext : DbContext
         {
-            using var locking = RedisHelper.Instance.Locking(locker, 60);
-            using (var scope = kernelConfig.ServiceProvider.CreateScope())
+            using var locking = RedisHelper.Instance.Locking(LockKey, 60);
+            using (var scope = serviceProvider.CreateScope())
             using (var initDbContext = scope.ServiceProvider.GetService<TDbContext>())
                 // 初始化表
                 InitDb(initDbContext.Database.GetDbConnection());
 
-            using (var scope = kernelConfig.ServiceProvider.CreateScope())
+            using (var scope = serviceProvider.CreateScope())
             {
                 using (var dbContext = scope.ServiceProvider.GetService<TDbContext>())
                 {
-                    var versions = scope.ServiceProvider.GetServices<IVersion>()?.OrderBy(r => r.Priority)?.ThenBy(r => r.VersionId)?.ToList();
+                    var versions = scope.ServiceProvider.GetServices<IVersion>()
+                        ?.OrderBy(r => r.Priority)
+                        .ThenBy(r => r.VersionId)
+                        .ToList();
                     if (versions.IsNullOrEmpty())
-                        return kernelConfig;
+                        return serviceProvider;
 
                     var conn = dbContext.Database.GetDbConnection();
                     if (conn.State == ConnectionState.Closed)
@@ -106,51 +116,67 @@ namespace Jinkong.Version
                     var versionIds = GetUpdatedVersions(conn);
                     if (versions.HasRepeat(r => r.VersionId))
                         throw new Exception("存在重复的VersionId");
-                    var notUpdates = versions.Where(r => !versionIds.Contains(r.VersionId));
-                    if (notUpdates.IsNullOrEmpty()) return kernelConfig;
+                    var notUpdates = versions!.Where(r => !versionIds.Contains(r.VersionId)).ToList();
+                    if (notUpdates.IsNullOrEmpty()) return serviceProvider;
 
+                    var logger = serviceProvider.GetRequiredService<ILoggerFactory>()
+                        .CreateLogger("Jinkong.Version.Postgres");
                     using (transaction)
                     {
                         try
                         {
                             foreach (var item in notUpdates)
                             {
-                                Console.WriteLine($"开始更新版本:{item.VersionId}");
+                                logger.LogInformation($"开始更新版本:{item.VersionId}");
                                 item.Update().Wait();
-                                Console.WriteLine($"版本更新完成:{item.VersionId}");
+                                logger.LogInformation($"版本更新完成:{item.VersionId}");
                             }
-                            InsertUpdateRecord(conn, dbContext.Database.CurrentTransaction.GetDbTransaction(), notUpdates.ToDictionary(r => r.VersionId, r => r.Desc));
+
+                            InsertUpdateRecord(conn, dbContext.Database.CurrentTransaction.GetDbTransaction(),
+                                notUpdates.ToDictionary(r => r.VersionId, r => r.Desc));
 
                             transaction.Commit();
 
-                            return kernelConfig;
+                            return serviceProvider;
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
                             transaction.Rollback();
-                            throw ex;
+                            throw;
                         }
                     }
                 }
             }
         }
 
-        public static IKernelConfig UseVersionManagement<TDbContext>(this IKernelConfig kernelConfig, Func<IServiceProvider, IDbContextTransaction> tranFunc)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="serviceProvider"></param>
+        /// <param name="tranFunc"></param>
+        /// <typeparam name="TDbContext"></typeparam>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
+        public static IServiceProvider UseVersionManagement<TDbContext>(this IServiceProvider serviceProvider,
+            Func<IServiceProvider, IDbContextTransaction> tranFunc)
             where TDbContext : DbContext
         {
-            using var locking = RedisHelper.Instance.Locking(locker, 60);
-            using (var scope = kernelConfig.ServiceProvider.CreateScope())
+            using var locking = RedisHelper.Instance.Locking(LockKey, 60);
+            using (var scope = serviceProvider.CreateScope())
             using (var initDbContext = scope.ServiceProvider.GetService<TDbContext>())
                 // 初始化表
                 InitDb(initDbContext.Database.GetDbConnection());
 
-            using (var scope = kernelConfig.ServiceProvider.CreateScope())
+            using (var scope = serviceProvider.CreateScope())
             {
                 using (var dbContext = scope.ServiceProvider.GetService<TDbContext>())
                 {
-                    var versions = scope.ServiceProvider.GetServices<IVersion>()?.OrderBy(r => r.Priority)?.ThenBy(r => r.VersionId)?.ToList();
+                    var versions = scope.ServiceProvider.GetServices<IVersion>()
+                        ?.OrderBy(r => r.Priority)
+                        .ThenBy(r => r.VersionId)
+                        .ToList();
                     if (versions.IsNullOrEmpty())
-                        return kernelConfig;
+                        return serviceProvider;
                     var conn = dbContext.Database.GetDbConnection();
                     if (conn.State == ConnectionState.Closed)
                         conn.Open();
@@ -159,29 +185,33 @@ namespace Jinkong.Version
                     if (versions.HasRepeat(r => r.VersionId))
                         throw new Exception("存在重复的VersionId");
 
-                    var notUpdates = versions.Where(r => !versionIds.Contains(r.VersionId));
-                    if (notUpdates.IsNullOrEmpty()) return kernelConfig;
+                    var notUpdates = versions!.Where(r => !versionIds.Contains(r.VersionId)).ToList();
+                    if (notUpdates.IsNullOrEmpty()) return serviceProvider;
 
+                    var logger = serviceProvider.GetRequiredService<ILoggerFactory>()
+                        .CreateLogger("Jinkong.Version.Postgres");
                     using (var transaction = tranFunc(scope.ServiceProvider))
                     {
                         try
                         {
                             foreach (var item in notUpdates)
                             {
-                                Console.WriteLine($"开始更新版本:{item.VersionId}");
+                                logger.LogInformation($"开始更新版本:{item.VersionId}");
                                 item.Update().Wait();
-                                Console.WriteLine($"版本更新完成:{item.VersionId}");
+                                logger.LogInformation($"版本更新完成:{item.VersionId}");
                             }
-                            InsertUpdateRecord(conn, dbContext.Database.CurrentTransaction.GetDbTransaction(), notUpdates.ToDictionary(r => r.VersionId, r => r.Desc));
+
+                            InsertUpdateRecord(conn, dbContext.Database.CurrentTransaction.GetDbTransaction(),
+                                notUpdates.ToDictionary(r => r.VersionId, r => r.Desc));
 
                             transaction.Commit();
 
-                            return kernelConfig;
+                            return serviceProvider;
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
                             transaction.Rollback();
-                            throw ex;
+                            throw;
                         }
                     }
                 }
@@ -194,11 +224,11 @@ namespace Jinkong.Version
         /// <summary>
         /// 初始化数据库
         /// </summary>
-        /// <param name="connString"></param>
+        /// <param name="conn"></param>
         internal static void InitDb(IDbConnection conn)
         {
             {
-                if (conn.State == System.Data.ConnectionState.Closed)
+                if (conn.State == ConnectionState.Closed)
                     conn.Open();
 
                 using (var cmd = conn.CreateCommand())
@@ -222,11 +252,11 @@ CREATE TABLE IF NOT EXISTS ""{schema}"".""{tableName}""(
         /// <summary>
         /// 获取已更新的版本id
         /// </summary>
-        /// <param name="connString"></param>
+        /// <param name="conn"></param>
         /// <returns></returns>
         internal static List<string> GetUpdatedVersions(IDbConnection conn)
         {
-            if (conn.State == System.Data.ConnectionState.Closed)
+            if (conn.State == ConnectionState.Closed)
                 conn.Open();
 
             using (var cmd = conn.CreateCommand())
@@ -245,9 +275,10 @@ CREATE TABLE IF NOT EXISTS ""{schema}"".""{tableName}""(
             }
         }
 
-        static void InsertUpdateRecord(IDbConnection conn, DbTransaction dbTransaction, Dictionary<string, string> versions)
+        static void InsertUpdateRecord(IDbConnection conn, DbTransaction dbTransaction,
+            Dictionary<string, string> versions)
         {
-            if (conn.State == System.Data.ConnectionState.Closed)
+            if (conn.State == ConnectionState.Closed)
                 conn.Open();
 
             foreach (var item in versions)
@@ -257,8 +288,9 @@ CREATE TABLE IF NOT EXISTS ""{schema}"".""{tableName}""(
                     var sql = $@"insert into ""{schema}"".""{tableName}"" values(@id,now(),@desc);";
                     cmd.CommandText = sql;
                     cmd.Transaction = dbTransaction;
-                    cmd.Parameters.Add(new NpgsqlParameter("@id", DbType.String, 32) { Value = item.Key });
-                    cmd.Parameters.Add(new NpgsqlParameter("@desc", DbType.String, 4000) { Value = item.Value ?? (object)DBNull.Value });
+                    cmd.Parameters.Add(new NpgsqlParameter("@id", DbType.String, 32) {Value = item.Key});
+                    cmd.Parameters.Add(new NpgsqlParameter("@desc", DbType.String, 4000)
+                        {Value = item.Value ?? (object) DBNull.Value});
                     cmd.ExecuteNonQuery();
                 }
             }
