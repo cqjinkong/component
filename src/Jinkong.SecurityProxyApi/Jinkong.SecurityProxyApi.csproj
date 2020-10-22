@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Compile Remove="dist\**"/>
+        <Content Remove="dist\**"/>
+        <EmbeddedResource Remove="dist\**"/>
+        <None Remove="dist\**"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Content Remove="appsettings.json"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Shashlik.Utils" Version="0.1.0-preview-00009"/>
+    </ItemGroup>
+</Project>

@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <NoWarn>1701;1702;1591;1572;1573;NU1608</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="3.1.5" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.5" />
+
+    <PackageReference Include="Senparc.Weixin" Version="6.7.502" />
+
+    <PackageReference Include="Senparc.Weixin.MP" Version="16.10.502.3" />
+    <PackageReference Include="Senparc.Weixin.TenPay" Version="1.5.502.4" />
+    <PackageReference Include="Senparc.Weixin.WxOpen" Version="3.8.502.1" />
+    <PackageReference Include="Shashlik.Kernel" Version="0.1.0-preview-00009" />
+    <PackageReference Include="Shashlik.RazorFormat" Version="0.1.0-preview-00009" />
+  </ItemGroup>
+</Project>

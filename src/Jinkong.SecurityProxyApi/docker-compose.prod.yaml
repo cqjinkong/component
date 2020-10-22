@@ -1,0 +1,13 @@
+version: '2.0'
+services:
+  safeproxy.prod:
+    restart: always
+    image: safeproxy
+    container_name: safeproxy.prod
+    network_mode: host
+    volumes:
+    - ./appsettings.Production.json:/app/appsettings.Production.json
+    environment:
+      TZ: Asia/Shanghai
+      ASPNETCORE_URLS: http://*:20002
+      ASPNETCORE_ENVIRONMENT: Production
