@@ -1,4 +1,4 @@
-﻿using Shashlik.Kernel.Autowired.Attributes;
+﻿using Shashlik.Kernel.Attributes;
 
 namespace Jinkong.Hangfire
 {

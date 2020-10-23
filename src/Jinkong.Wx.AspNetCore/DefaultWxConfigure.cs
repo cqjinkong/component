@@ -10,7 +10,7 @@ namespace Jinkong.Wx.AspNetCore
     /// <summary>
     /// 微信默认注册配置
     /// </summary>
-    public class DefaultWxConfigure : IWxConfigure
+    public class DefaultWxConfigure : IWxConfigureExtensionAutowire
     {
         public void Configure(IRegisterService registerService, IServiceProvider serviceProvider)
         {        

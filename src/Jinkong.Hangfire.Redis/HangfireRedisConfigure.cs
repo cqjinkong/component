@@ -2,16 +2,15 @@
 using Hangfire;
 using Microsoft.Extensions.Options;
 using Shashlik.Kernel;
-using Shashlik.Kernel.Autowired;
-using Shashlik.Kernel.Autowired.Attributes;
+using Shashlik.Kernel.Attributes;
 using Shashlik.Redis;
 
 namespace Jinkong.Hangfire.Redis
 {
-    [AfterAt(typeof(RedisConfigure))]
-    public class HangfireRedisConfigure : IAutowiredConfigureServices
+    [AfterAt(typeof(RedisAutowire))]
+    public class HangfireRedisAutowire : IServiceAutowire
     {
-        public HangfireRedisConfigure(IOptions<HangfireOptions> options, CSRedisClient redisClient)
+        public HangfireRedisAutowire(IOptions<HangfireOptions> options, CSRedisClient redisClient)
         {
             Options = options;
             RedisClient = redisClient;
@@ -20,7 +19,7 @@ namespace Jinkong.Hangfire.Redis
         private IOptions<HangfireOptions> Options { get; }
         private CSRedisClient RedisClient { get; }
 
-        public void ConfigureServices(IKernelServices kernelService)
+        public void Configure(IKernelServices kernelService)
         {
             if (!Options.Value.Enable)
                 return;

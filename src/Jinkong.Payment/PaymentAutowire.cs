@@ -4,9 +4,9 @@ using Shashlik.Kernel;
 
 namespace Jinkong.Payment
 {
-    public class PaymentConfigure : IAutowiredConfigureAspNetCore
+    public class PaymentAutowire : IAspNetCoreAutowire
     {
-        public void Configure(IApplicationBuilder app, IKernelConfigure kernelConfigure)
+        public void Configure(IApplicationBuilder app, IKernelServiceProvider kernelServiceProvider)
         {
             app.UsePayNotify();
         }

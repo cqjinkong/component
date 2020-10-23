@@ -211,7 +211,7 @@ namespace Jinkong.GeoCoder
 
         static IReadOnlyDictionary<string, AreaItems> LoadAreas()
         {
-            GeoCoderOptions geoCoderOptions = Shashlik.Kernel.KernelServiceProvider.ServiceProvider
+            GeoCoderOptions geoCoderOptions = Shashlik.Kernel.GlobalKernelServiceProvider.KernelServiceProvider
                 .GetService<IOptions<GeoCoderOptions>>().Value;
             var all = geoCoderOptions.Areas;
             Dictionary<string, AreaItems> result = new Dictionary<string, AreaItems>();

@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <Import Project="..\..\common.xml"/>
+  <Import Project="..\..\common.xml" />
 <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
   </PropertyGroup>
@@ -17,7 +17,7 @@
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="3.1.9" />
     <PackageReference Include="RestSharp" Version="106.11.7" />
     <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="3.1.9" />
-    <PackageReference Include="Shashlik.Kernel" Version="0.1.0-preview-00011" />
+    <PackageReference Include="Shashlik.Kernel" Version="0.1.0-preview-00012" />
   </ItemGroup>
 
   <ItemGroup>

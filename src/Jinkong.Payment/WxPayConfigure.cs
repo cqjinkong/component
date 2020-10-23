@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Linq;
-using Jinkong.Wx;
 using Jinkong.Wx.AspNetCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
-using Senparc.CO2NET;
 using Senparc.CO2NET.RegisterServices;
 using Senparc.Weixin.Helpers;
 using Senparc.Weixin.RegisterServices;
@@ -16,7 +14,7 @@ namespace Jinkong.Payment
     /// <summary>
     /// 微信支付配置注册
     /// </summary>
-    public class WxPayConfigure : IWxConfigure, IWxConfigureServices
+    public class WxPayConfigure : IWxConfigureExtensionAutowire, IServiceAutowire
     {
         public void Configure(IRegisterService registerService, IServiceProvider serviceProvider)
         {
@@ -35,8 +33,9 @@ namespace Jinkong.Payment
             }
         }
 
-        public void ConfigureServices(IServiceCollection services)
+        public void Configure(IKernelServices kernelServices)
         {
+            var services = kernelServices.Services;
             using var serviceProvider = services.BuildServiceProvider();
             var mchs = serviceProvider.GetService<IOptions<PayMchOptions>>();
 
@@ -50,11 +49,6 @@ namespace Jinkong.Payment
                 var key = TenPayHelper.GetRegisterKey(wxMch.MchId, null);
                 services.AddCertHttpClient(key, wxMch.WxCertPwd, wxMch.WxCertPath);
             }
-        }
-
-        public void ConfigureServices(IKernelServices services)
-        {
-            throw new NotImplementedException();
         }
     }
 }

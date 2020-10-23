@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Transactions;
 using Health.Payment;
 using Health.Payment.PayAbstract;
 using Microsoft.EntityFrameworkCore;
@@ -11,11 +10,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Shashlik.EventBus;
-using Shashlik.Kernel.Locker;
+using Shashlik.Kernel;
 using Shashlik.Mapper;
-using Shashlik.Pager;
 using Shashlik.Utils.Extensions;
-using CollectionExtensions = Shashlik.Utils.Extensions.CollectionExtensions;
 
 namespace Jinkong.Payment.EfStore
 {

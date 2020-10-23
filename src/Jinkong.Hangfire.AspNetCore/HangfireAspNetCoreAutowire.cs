@@ -10,16 +10,16 @@ using Shashlik.Utils.Extensions;
 
 namespace Jinkong.Hangfire.AspNetCore
 {
-    public class HangfireAspNetCoreConfire : IAutowiredConfigureAspNetCore
+    public class HangfireAspNetCoreAutowire : IAspNetCoreAutowire
     {
-        public HangfireAspNetCoreConfire(IOptions<HangfireOptions> options)
+        public HangfireAspNetCoreAutowire(IOptions<HangfireOptions> options)
         {
             Options = options;
         }
 
         private IOptions<HangfireOptions> Options { get; }
 
-        public void Configure(IApplicationBuilder app, IKernelConfigure kernelConfigure)
+        public void Configure(IApplicationBuilder app, IKernelServiceProvider kernelServiceProvider)
         {
             app.UseHangfireServer();
             if (Options.Value.Enable)

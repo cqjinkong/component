@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Shashlik.Kernel.Autowired.Attributes;
+using Shashlik.Kernel.Attributes;
 using Shashlik.Utils.Extensions;
 
 // ReSharper disable CheckNamespace

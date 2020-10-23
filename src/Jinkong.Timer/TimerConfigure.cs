@@ -1,18 +1,17 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Shashlik.Kernel;
-using Shashlik.Kernel.Autowired;
 
 // ReSharper disable CheckNamespace
 
 namespace Sbt.Invoice.Service
 {
-    public class TimerConfigure : IAutowiredConfigure
+    public class TimerAutowire : IServiceProviderAutowire
     {
-        public void Configure(IKernelConfigure kernelConfigure)
+        public void Configure(IKernelServiceProvider kernelServiceProvider)
         {
-            using var scope = kernelConfigure.ServiceProvider.CreateScope();
+            using var scope = kernelServiceProvider.CreateScope();
             var timers = scope.ServiceProvider.GetServices<ITimer>();
-            var scheduledService = kernelConfigure.ServiceProvider.GetService<ScheduledService>();
+            var scheduledService = kernelServiceProvider.GetService<ScheduledService>();
 
             foreach (var item in timers)
                 scheduledService.AddTimer(item);

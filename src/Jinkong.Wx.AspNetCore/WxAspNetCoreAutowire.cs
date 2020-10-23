@@ -6,13 +6,12 @@ using Senparc.CO2NET;
 using Senparc.CO2NET.AspNet;
 using Shashlik.AspNetCore;
 using Shashlik.Kernel;
-using Shashlik.Kernel.Autowired;
 
 namespace Jinkong.Wx.AspNetCore
 {
-    public class WxHttpConfigure : IAutowiredConfigureAspNetCore
+    public class WxAspNetCoreAutowire : IAspNetCoreAutowire
     {
-        public WxHttpConfigure(IOptions<WxOptions> wxOptions, IOptions<WxAspNetCoreOptions> wxApiOptions)
+        public WxAspNetCoreAutowire(IOptions<WxOptions> wxOptions, IOptions<WxAspNetCoreOptions> wxApiOptions)
         {
             WxOptions = wxOptions;
             WxApiOptions = wxApiOptions;
@@ -21,7 +20,7 @@ namespace Jinkong.Wx.AspNetCore
         private IOptions<WxAspNetCoreOptions> WxApiOptions { get; set; }
         private IOptions<WxOptions> WxOptions { get; set; }
 
-        public void Configure(IApplicationBuilder app, IKernelConfigure kernelConfigure)
+        public void Configure(IApplicationBuilder app, IKernelServiceProvider kernelServiceProvider)
         {
             if (!WxOptions.Value.Enable)
                 return;
@@ -31,16 +30,11 @@ namespace Jinkong.Wx.AspNetCore
                 var env = app.ApplicationServices.GetRequiredService<IHostEnvironment>();
 
                 app.UseSenparcGlobal(env, senparcSetting.Value,
-                        globalRegister =>
-                        {
-                            kernelConfigure.BeginAutowired<IWxConfigure>()
-                                .Build(r =>
-                                {
-                                    (r.ServiceInstance as IWxConfigure)!.Configure(globalRegister,
-                                        app.ApplicationServices);
-                                });
-                        })
-                    ;
+                    globalRegister =>
+                    {
+                        kernelServiceProvider.Autowire<IWxConfigureExtensionAutowire>(
+                            r => r.Configure(globalRegister, app.ApplicationServices));
+                    });
             }
 
             app.UseWxApi();

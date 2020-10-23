@@ -1,13 +1,12 @@
 ﻿using Shashlik.Kernel;
-using Shashlik.Kernel.Autowired;
 
 // ReSharper disable CheckNamespace
 
 namespace Jinkong.NLogger
 {
-    public class NLoggerConfigure : IAutowiredConfigureServices
+    public class NLoggerAutowire : IServiceAutowire
     {
-        public void ConfigureServices(IKernelServices kernelService)
+        public void Configure(IKernelServices kernelService)
         {
             kernelService.AddNLogWithMysql(kernelService.RootConfiguration.GetSection("Logging:NLog"),
                 autoMigration: true);

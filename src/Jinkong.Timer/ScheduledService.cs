@@ -38,7 +38,7 @@ namespace Sbt.Invoice.Service
             using (timerInstance)
                 Timers.TryAdd(timerInstance.GetType(), (timer: new Timer(r =>
                 {
-                    using var scope = KernelServiceProvider.ServiceProvider.CreateScope();
+                    using var scope = GlobalKernelServiceProvider.KernelServiceProvider.CreateScope();
                     using var instance = scope.ServiceProvider.GetRequiredService(timerType) as ITimer;
                     logger.LogInformation($"begin execute timer: {timerType}");
                     try

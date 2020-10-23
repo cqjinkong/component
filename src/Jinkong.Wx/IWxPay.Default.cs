@@ -342,7 +342,7 @@ namespace Jinkong.Wx
             int orderAmount, int refundAmount, string refundDesc, string notifyUrl)
         {
             string nonceStr = TenPayV3Util.GetNoncestr();
-            var result = await TenPayV3.RefundAsync(Shashlik.Kernel.KernelServiceProvider.ServiceProvider,
+            var result = await TenPayV3.RefundAsync(Shashlik.Kernel.GlobalKernelServiceProvider.KernelServiceProvider,
                 new TenPayV3RefundRequestData(
                     appId, mchId, mchKey, null, nonceStr, null, localTranNo, localRefundNo,
                     (int) orderAmount, (int) refundAmount, null, null, refundDescription: refundDesc,

@@ -11,16 +11,16 @@ using Shashlik.Utils.Extensions;
 
 namespace Jinkong.Wx
 {
-    public class WxConfigure : IAutowiredConfigureServices
+    public class WxAutowire : IServiceAutowire
     {
-        public WxConfigure(IOptions<WxOptions> options)
+        public WxAutowire(IOptions<WxOptions> options)
         {
             Options = options;
         }
 
         private IOptions<WxOptions> Options { get; }
 
-        public void ConfigureServices(IKernelServices kernelService)
+        public void Configure(IKernelServices kernelService)
         {
             if (!Options.Value.Enable)
                 return;
@@ -60,9 +60,6 @@ namespace Jinkong.Wx
             services
                 //Senparc.CO2NET 全局注册,主要是注册下面的节点Jinkong.Wx.SenparcSetting
                 .AddSenparcWeixinServices(kernelService.RootConfiguration.GetSection("Jinkong.Wx"));
-
-            kernelService.BeginAutowired<IWxConfigureServices>()
-                .Build(r => { (r.ServiceInstance as IWxConfigureServices)!.ConfigureServices(kernelService); });
         }
     }
 }

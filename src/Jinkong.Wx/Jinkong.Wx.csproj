@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <Import Project="..\..\common.xml"/>
+  <Import Project="..\..\common.xml" />
 <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
   </PropertyGroup>
@@ -17,7 +17,7 @@
     <PackageReference Include="Senparc.Weixin.MP" Version="16.10.601" />
     <PackageReference Include="Senparc.Weixin.TenPay" Version="1.5.600" />
     <PackageReference Include="Senparc.Weixin.WxOpen" Version="3.8.601" />
-    <PackageReference Include="Shashlik.Kernel" Version="0.1.0-preview-00011" />
-    <PackageReference Include="Shashlik.RazorFormat" Version="0.1.0-preview-00011" />
+    <PackageReference Include="Shashlik.Kernel" Version="0.1.0-preview-00012" />
+    <PackageReference Include="Shashlik.RazorFormat" Version="0.1.0-preview-00012" />
   </ItemGroup>
 </Project>
