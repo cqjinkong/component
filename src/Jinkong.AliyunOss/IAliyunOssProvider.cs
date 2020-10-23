@@ -1,4 +1,4 @@
-﻿﻿using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 
 namespace Jinkong.AliyunOss
@@ -16,10 +16,9 @@ namespace Jinkong.AliyunOss
         /// <param name="fileKey">完整的文件key,OSS文件路径</param>
         /// <param name="expireSeconds">策略过期时间</param>
         /// <param name="maxSize">文件大小限制</param>
-        /// <param name="policyFileExtLimit">文件扩展命名限制,空则不限制</param>
         /// <returns></returns>
         AliyunOssPostPolicy BuildSingleFilePolicy(string fileKey, int expireSeconds = 60,
-            int maxSize = 8 * 1024 * 1024, IEnumerable<string> policyFileExtLimit = null);
+            int maxSize = 8 * 1024 * 1024);
 
         /// <summary>
         /// 生成单文件上传策略,会限定上传的文件名
