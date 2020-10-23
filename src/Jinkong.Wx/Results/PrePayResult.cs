@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+// ReSharper disable CheckNamespace
 
 namespace Jinkong.Wx
 {
@@ -11,8 +12,6 @@ namespace Jinkong.Wx
     /// <typeparam name="TResult"></typeparam>
     public class PrePayResult<TResult>
     {
-        // ReSharper disable All 
-#pragma warning disable IDE1006 // 命名样式
         /// <summary>
         /// 不同支付模式对应的预付单结果
         /// </summary>
@@ -27,8 +26,5 @@ namespace Jinkong.Wx
         /// 微信统一下单结果
         /// </summary>
         public UnifiedorderResult UnifiedorderResult { get; set; }
-
-#pragma warning restore IDE1006 // 命名样式
-        // ReSharper restore All 
     }
 }

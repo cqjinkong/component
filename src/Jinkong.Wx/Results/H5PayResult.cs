@@ -1,8 +1,4 @@
-﻿using Senparc.Weixin.TenPay.V3;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
+﻿// ReSharper disable CheckNamespace
 namespace Jinkong.Wx
 {
     /// <summary>
@@ -10,14 +6,9 @@ namespace Jinkong.Wx
     /// </summary>
     public class H5PayResult
     {
-        // ReSharper disable All 
-#pragma warning disable IDE1006 // 命名样式
         /// <summary>
         /// H5支付跳转地址
         /// </summary>
         public string MwebUrl { get; set; }
-
-#pragma warning restore IDE1006 // 命名样式
-        // ReSharper restore All 
     }
 }

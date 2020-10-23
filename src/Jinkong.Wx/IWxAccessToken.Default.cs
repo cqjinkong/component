@@ -3,7 +3,7 @@ using Senparc.Weixin.MP.Containers;
 
 namespace Jinkong.Wx
 {
-    class DefaultWxAccessToken : IWxAccessToken
+    internal class DefaultWxAccessToken : IWxAccessToken
     {
         public DefaultWxAccessToken(IOptionsMonitor<WxOptions> options)
         {
