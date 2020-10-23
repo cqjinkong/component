@@ -25,8 +25,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "hangfire", "hangfire", "{E4
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hangfire.Redis.CSRedisCore", "src\Hangfire.Redis.CSRedisCore\Hangfire.Redis.CSRedisCore\Hangfire.Redis.CSRedisCore.csproj", "{6C399508-DF6C-4D4D-85A0-A278ECE5A67C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hangfire.Redis.Tests", "src\Hangfire.Redis.CSRedisCore\Hangfire.Redis.Tests\Hangfire.Redis.Tests.csproj", "{94A45DFA-D1BC-4271-8C73-282F90ED55C4}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jinkong.Hangfire", "src\Jinkong.Hangfire\Jinkong.Hangfire.csproj", "{D974A87F-A1B6-421A-A51E-6B3A7C7604E7}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jinkong.Hangfire.Redis", "src\Jinkong.Hangfire.Redis\Jinkong.Hangfire.Redis.csproj", "{A9C4106C-E31E-44CF-991D-6BD50B5F072E}"
@@ -34,8 +32,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jinkong.AliVideo", "src\Jinkong.AliVideo\Jinkong.AliVideo.csproj", "{166357B1-99B8-455D-9891-BE5F88C2E408}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jinkong.SecurityProxyClient", "src\Jinkong.SecurityProxyClient\Jinkong.SecurityProxyClient.csproj", "{345F1A17-7039-49D4-B40F-8182C66F4422}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jinkong.SecurityProxyApi", "src\Jinkong.SecurityProxyApi\Jinkong.SecurityProxyApi.csproj", "{0D286E97-03E5-4587-8B2A-8C7F7FDBE921}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "wx", "wx", "{189C6515-9E39-4DC5-9EB3-551F60718014}"
 EndProject
@@ -103,10 +99,6 @@ Global
 		{6C399508-DF6C-4D4D-85A0-A278ECE5A67C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C399508-DF6C-4D4D-85A0-A278ECE5A67C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6C399508-DF6C-4D4D-85A0-A278ECE5A67C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{94A45DFA-D1BC-4271-8C73-282F90ED55C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{94A45DFA-D1BC-4271-8C73-282F90ED55C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{94A45DFA-D1BC-4271-8C73-282F90ED55C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{94A45DFA-D1BC-4271-8C73-282F90ED55C4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D974A87F-A1B6-421A-A51E-6B3A7C7604E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D974A87F-A1B6-421A-A51E-6B3A7C7604E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D974A87F-A1B6-421A-A51E-6B3A7C7604E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -123,10 +115,6 @@ Global
 		{345F1A17-7039-49D4-B40F-8182C66F4422}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{345F1A17-7039-49D4-B40F-8182C66F4422}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{345F1A17-7039-49D4-B40F-8182C66F4422}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0D286E97-03E5-4587-8B2A-8C7F7FDBE921}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0D286E97-03E5-4587-8B2A-8C7F7FDBE921}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0D286E97-03E5-4587-8B2A-8C7F7FDBE921}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0D286E97-03E5-4587-8B2A-8C7F7FDBE921}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4A4C1761-72D2-46AD-A237-64020465B628}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4A4C1761-72D2-46AD-A237-64020465B628}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4A4C1761-72D2-46AD-A237-64020465B628}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -165,7 +153,6 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{6C399508-DF6C-4D4D-85A0-A278ECE5A67C} = {E44FEAD1-B915-496C-A6F6-08740CFE8377}
-		{94A45DFA-D1BC-4271-8C73-282F90ED55C4} = {E44FEAD1-B915-496C-A6F6-08740CFE8377}
 		{D974A87F-A1B6-421A-A51E-6B3A7C7604E7} = {E44FEAD1-B915-496C-A6F6-08740CFE8377}
 		{A9C4106C-E31E-44CF-991D-6BD50B5F072E} = {E44FEAD1-B915-496C-A6F6-08740CFE8377}
 		{4A4C1761-72D2-46AD-A237-64020465B628} = {189C6515-9E39-4DC5-9EB3-551F60718014}
