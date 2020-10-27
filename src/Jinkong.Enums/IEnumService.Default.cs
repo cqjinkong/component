@@ -8,7 +8,7 @@ namespace Jinkong.Enums
     /// <summary>
     /// 枚举服务
     /// </summary>
-    class DefaultEnumService : IEnumService
+    internal class DefaultEnumService : IEnumService
     {
         Lazy<List<EnumModel>> enumModels;
         public DefaultEnumService(Lazy<List<EnumModel>> enumModels)

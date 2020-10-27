@@ -30,7 +30,7 @@ namespace Jinkong.Enums
         }
 
         /// <summary>
-        /// 增加枚举服务,使用约定特性<see cref="GucEnumDefinitionAttribute"/>约定注册枚举数据
+        /// 增加枚举服务,使用约定特性<see cref="JinkongEnumDefinitionAttribute"/>约定注册枚举数据
         /// </summary>
         /// <param name="kernelBuilder"></param>
         /// <param name="configuration">可自定义的枚举描述节点配置,_Desc为枚举自身的描述(约定)</param>
@@ -50,7 +50,7 @@ namespace Jinkong.Enums
             HashSet<MemberInfo> members = new HashSet<MemberInfo>();
             foreach (var assembly in assemblies)
             foreach (var type in assembly.DefinedTypes.Where(r =>
-                r.IsDefinedAttribute<GucEnumDefinitionAttribute>(false)))
+                r.IsDefinedAttribute<JinkongEnumDefinitionAttribute>(false)))
                 if (type.IsEnum)
                     members.Add(type);
                 else if (type.IsClass)
