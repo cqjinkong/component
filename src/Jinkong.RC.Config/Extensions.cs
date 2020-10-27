@@ -9,8 +9,13 @@ using Microsoft.AspNetCore.Builder;
 using Websocket.Client;
 using System.Threading;
 using System.Reactive.Linq;
+using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using Shashlik.Utils.Helpers;
+
+// ReSharper disable UnusedMethodReturnValue.Global
+
+// ReSharper disable InconsistentNaming
 
 namespace Jinkong.RC.Config
 {
@@ -33,11 +38,8 @@ namespace Jinkong.RC.Config
         /// 
         /// </summary>
         /// <param name="builder"></param>
-        /// <param name="optionsGetter"></param>
         /// <returns></returns>
-        public static IHostBuilder UseRCConfiguration(
-            this IHostBuilder builder,
-            Func<HostBuilderContext, IConfiguration, RCConfigSource> optionsGetter)
+        public static IHostBuilder UseRCConfiguration(this IHostBuilder builder)
         {
             builder.ConfigureServices((context, services) =>
             {
@@ -54,8 +56,18 @@ namespace Jinkong.RC.Config
 
             builder.ConfigureAppConfiguration((host, config) =>
             {
-                var source = optionsGetter(host, config.Build());
-                source.Env = host.HostingEnvironment.EnvironmentName;
+                var configurationRoot = config.Build();
+                var options = configurationRoot.GetSection("RCConfig").Get<RCOptions>();
+
+                if (options.Polling.HasValue && options.Polling < 0)
+                    throw new InvalidOperationException("invalid rc options value of: RC.Polling. ");
+
+                var source = new RCConfigSource(options.Server, options.AppId, options.AppKey,
+                    options.Polling.HasValue ? TimeSpan.FromSeconds(options.Polling.Value) : (TimeSpan?) null)
+                {
+                    Env = host.HostingEnvironment.EnvironmentName
+                };
+
                 config.AddRCConfigProvider(source);
             });
 
@@ -65,13 +77,13 @@ namespace Jinkong.RC.Config
         private static readonly object GATE1 = new object();
 
         /// <summary>
-        /// 使用websocket连接rc
+        /// 使用websocket连接rc实时更新
         /// </summary>
         /// <param name="app"></param>
         /// <param name="appId"></param>
         /// <param name="secret"></param>
         /// <param name="websocketAddress"></param>
-        public static async void UseRCConfig(this IApplicationBuilder app, string appId, string secret,
+        public static async void UseRCRealTimeUpdate(this IApplicationBuilder app, string appId, string secret,
             string websocketAddress)
         {
             var t = DateTime.Now.GetLongDate();
@@ -92,10 +104,14 @@ namespace Jinkong.RC.Config
                         $"Disconnection happened, type: {info.Type}, ex:{info.Exception}, CancelReconnection:{info.CancelReconnection}");
             });
 
+
+            var breakSource = new CancellationTokenSource();
             _ = Task.Run(() =>
             {
                 while (true)
                 {
+                    if (breakSource.Token.IsCancellationRequested)
+                        break;
                     Thread.Sleep(30 * 1000);
                     client.Send("heartbeat");
                 }
@@ -122,14 +138,25 @@ namespace Jinkong.RC.Config
 
             AppDomain.CurrentDomain.ProcessExit += (a, b) =>
             {
+                breakSource.Cancel();
                 try
                 {
+                    breakSource.Dispose();
                     client.Dispose();
                 }
-                catch { }
+                catch
+                {
+                    // ignored
+                }
             };
 
             await client.Start();
+        }
+
+        public static async void UseRCRealTimeUpdate(this IApplicationBuilder app)
+        {
+            var options = app.ApplicationServices.GetRequiredService<IOptions<RCOptions>>().Value;
+            UseRCRealTimeUpdate(app, options.AppId, options.AppKey, options.Websocket);
         }
 
         public class RefreshModel

@@ -18,13 +18,7 @@ namespace Jinkong.RC.Config.Demo
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-                .UseRCConfiguration((host, config) =>
-                {
-                    var server = config.GetValue<string>("RCConfig:Server");
-                    var appId = config.GetValue<string>("RCConfig:AppId");
-                    var appKey = config.GetValue<string>("RCConfig:AppKey");
-                    return new RCConfigSource(server, appId, appKey);
-                })
+                .UseRCConfiguration()
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder

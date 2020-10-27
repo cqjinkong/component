@@ -19,8 +19,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jinkong.Timer", "src\Jinkon
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jinkong.Version.Mysql", "src\Jinkong.Version.Mysql\Jinkong.Version.Mysql.csproj", "{0DD3533C-1ABB-4AB9-8929-01BD1535B994}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jinkong.RC.Config.Demo", "src\Jinkong.RC.Config.Demo\Jinkong.RC.Config.Demo.csproj", "{20B326E1-882F-4206-A040-8FFCD59E05AB}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "hangfire", "hangfire", "{E44FEAD1-B915-496C-A6F6-08740CFE8377}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hangfire.Redis.CSRedisCore", "src\Hangfire.Redis.CSRedisCore\Hangfire.Redis.CSRedisCore\Hangfire.Redis.CSRedisCore.csproj", "{6C399508-DF6C-4D4D-85A0-A278ECE5A67C}"
@@ -95,10 +93,6 @@ Global
 		{0DD3533C-1ABB-4AB9-8929-01BD1535B994}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0DD3533C-1ABB-4AB9-8929-01BD1535B994}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0DD3533C-1ABB-4AB9-8929-01BD1535B994}.Release|Any CPU.Build.0 = Release|Any CPU
-		{20B326E1-882F-4206-A040-8FFCD59E05AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{20B326E1-882F-4206-A040-8FFCD59E05AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{20B326E1-882F-4206-A040-8FFCD59E05AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{20B326E1-882F-4206-A040-8FFCD59E05AB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6C399508-DF6C-4D4D-85A0-A278ECE5A67C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6C399508-DF6C-4D4D-85A0-A278ECE5A67C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C399508-DF6C-4D4D-85A0-A278ECE5A67C}.Release|Any CPU.ActiveCfg = Release|Any CPU

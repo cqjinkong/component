@@ -40,16 +40,11 @@ namespace Jinkong.RC.Config.Demo
             var appId = Configuration.GetValue<string>("RCConfig:AppId");
             var appKey = Configuration.GetValue<string>("RCConfig:AppKey");
             var websocket = Configuration.GetValue<string>("RCConfig:WebSocket");
-            // Ô¶³ÌÅäÖÃ
-            app.UseRCConfig(appId, appKey, websocket);
-
+            app.UseRCRealTimeUpdate(appId, appKey, websocket);
 
             app.UseAuthorization();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
     }
 }
