@@ -19,9 +19,9 @@
 
     <ItemGroup>
         <FrameworkReference Include="Microsoft.AspNetCore.App" />
-        <PackageReference Include="Shashlik.Kernel" Version="0.1.0-preview-00012" />
-        <PackageReference Include="Shashlik.EfCore" Version="0.1.0-preview-00012" />
-        <PackageReference Include="Shashlik.RazorFormat" Version="0.1.0-preview-00012" />
+        <PackageReference Include="Shashlik.Kernel" Version="0.1.0-preview-*" />
+        <PackageReference Include="Shashlik.EfCore" Version="0.1.0-preview-*" />
+        <PackageReference Include="Shashlik.RazorFormat" Version="0.1.0-preview-*" />
 
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.9" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.9">
@@ -31,7 +31,7 @@
         <PackageReference Include="NLog.MailKit" Version="3.3.0" />
         <PackageReference Include="NLog.Web.AspNetCore" Version="4.9.3" />
         <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.2.3" />
-        <PackageReference Include="Shashlik.Utils" Version="0.1.0-preview-00012" />
+        <PackageReference Include="Shashlik.Utils" Version="0.1.0-preview-*" />
     </ItemGroup>
 
     <ItemGroup>

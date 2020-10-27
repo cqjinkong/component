@@ -1,10 +1,12 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Shashlik.Kernel;
+using Shashlik.Kernel.Attributes;
 
 // ReSharper disable CheckNamespace
 
 namespace Sbt.Invoice.Service
 {
+    [ConditionOnProperty(typeof(bool), "Jinkong.Timer.Enable", true, DefaultValue = true)]
     public class TimerAutowire : IServiceProviderAutowire
     {
         public void Configure(IKernelServiceProvider kernelServiceProvider)

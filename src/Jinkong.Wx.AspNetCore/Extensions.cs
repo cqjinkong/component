@@ -113,7 +113,7 @@ namespace Jinkong.Wx.AspNetCore
             where T : class
         {
             httpContext.Response.ContentType = contentType;
-            await httpContext.Response.WriteAsync(result.ToJsonWithCamelCasePropertyNames());
+            await httpContext.Response.WriteAsync(result.ToJsonWithCamelCase());
         }
 
         /// <summary>

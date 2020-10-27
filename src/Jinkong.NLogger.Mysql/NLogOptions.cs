@@ -1,4 +1,9 @@
 ﻿using System.Collections.Generic;
+// ReSharper disable AutoPropertyCanBeMadeGetOnly.Global
+
+// ReSharper disable ClassNeverInstantiated.Global
+// ReSharper disable UnusedAutoPropertyAccessor.Global
+// ReSharper disable CollectionNeverUpdated.Global
 
 // ReSharper disable CheckNamespace
 

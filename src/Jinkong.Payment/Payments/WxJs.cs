@@ -36,7 +36,7 @@ namespace Jinkong.Payment
                 payParams.LocalTradeNo,
                 payParams.TraderId,
                 $"{WxsdkOptions.Value.GlobalSettings.ThisHost.Trim().TrimEnd('/')}{PayResultNotifyUrl}");
-            return new PrepayData(result.Result.ToJsonWithCamelCasePropertyNames(),
+            return new PrepayData(result.Result.ToJsonWithCamelCase(),
                 result.UnifiedorderResult.ResultXml);
         }
 

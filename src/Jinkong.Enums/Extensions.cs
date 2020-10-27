@@ -46,7 +46,7 @@ namespace Jinkong.Enums
 
         static List<EnumModel> LoadEnumModels(IConfiguration configuration, DependencyContext dependencyContext = null)
         {
-            var assemblies = AssemblyHelper.GetReferredAssemblies<IEnumService>(dependencyContext);
+            var assemblies = ReflectHelper.GetReferredAssemblies<IEnumService>(dependencyContext);
             HashSet<MemberInfo> members = new HashSet<MemberInfo>();
             foreach (var assembly in assemblies)
             foreach (var type in assembly.DefinedTypes.Where(r =>
