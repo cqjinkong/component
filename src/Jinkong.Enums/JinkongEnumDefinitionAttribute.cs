@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+
+// ReSharper disable ClassNeverInstantiated.Global
 
 namespace Jinkong.Enums
 {
@@ -8,7 +8,7 @@ namespace Jinkong.Enums
     /// guc 枚举定义
     /// </summary>
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Enum)]
-    public class GucEnumDefinitionAttribute : Attribute
+    public class JinkongEnumDefinitionAttribute : Attribute
     {
     }
 }

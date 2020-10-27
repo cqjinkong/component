@@ -7,9 +7,9 @@ namespace Jinkong.Enums
     /// <summary>
     /// 枚举值验证
     /// </summary>
-    public class GucEnumAttribute : ValidationAttribute
+    public class JinkongEnumAttribute : ValidationAttribute
     {
-        public GucEnumAttribute(string name)
+        public JinkongEnumAttribute(string name)
         {
             Name = name;
         }
@@ -17,7 +17,7 @@ namespace Jinkong.Enums
         /// <summary>
         /// 枚举名称
         /// </summary>
-        public string Name { get; set; }
+        public string Name { get; }
 
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
@@ -28,10 +28,11 @@ namespace Jinkong.Enums
                 return ValidationResult.Success;
 
             var enumService = validationContext.GetRequiredService<IEnumService>();
-            if (enumService.IsValid(Name, (int)value))
+            if (enumService.IsValid(Name, (int) value))
                 return ValidationResult.Success;
 
-            return new ValidationResult(ErrorMessage ?? $"{validationContext.DisplayName ?? validationContext.MemberName} invalid enum value.");
+            return new ValidationResult(ErrorMessage ??
+                                        $"{validationContext.DisplayName ?? validationContext.MemberName} invalid enum value.");
         }
     }
 }

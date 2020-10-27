@@ -33,31 +33,36 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jinkong.AliVideo", "src\Jin
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jinkong.SecurityProxyClient", "src\Jinkong.SecurityProxyClient\Jinkong.SecurityProxyClient.csproj", "{345F1A17-7039-49D4-B40F-8182C66F4422}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jinkong.SecurityProxyApi", "src\Jinkong.SecurityProxyApi\Jinkong.SecurityProxyApi.csproj", "{0D286E97-03E5-4587-8B2A-8C7F7FDBE921}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jinkong.SecurityProxyApi", "src\Jinkong.SecurityProxyApi\Jinkong.SecurityProxyApi.csproj", "{0D286E97-03E5-4587-8B2A-8C7F7FDBE921}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "wx", "wx", "{189C6515-9E39-4DC5-9EB3-551F60718014}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jinkong.Senparc.CsRedis", "src\Jinkong.Senparc.CsRedis\Jinkong.Senparc.CsRedis.csproj", "{4A4C1761-72D2-46AD-A237-64020465B628}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jinkong.Senparc.CsRedis", "src\Jinkong.Senparc.CsRedis\Jinkong.Senparc.CsRedis.csproj", "{4A4C1761-72D2-46AD-A237-64020465B628}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jinkong.Wx", "src\Jinkong.Wx\Jinkong.Wx.csproj", "{C00B1D55-E500-45D9-A31C-F9EA5B691281}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jinkong.Wx", "src\Jinkong.Wx\Jinkong.Wx.csproj", "{C00B1D55-E500-45D9-A31C-F9EA5B691281}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jinkong.Hangfire.AspNetCore", "src\Jinkong.Hangfire.AspNetCore\Jinkong.Hangfire.AspNetCore.csproj", "{0393D2BC-FEED-4AEE-8B2A-9B192A4BCE06}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jinkong.Hangfire.AspNetCore", "src\Jinkong.Hangfire.AspNetCore\Jinkong.Hangfire.AspNetCore.csproj", "{0393D2BC-FEED-4AEE-8B2A-9B192A4BCE06}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jinkong.Wx.AspNetCore", "src\Jinkong.Wx.AspNetCore\Jinkong.Wx.AspNetCore.csproj", "{63743144-3D10-4C88-9A5A-C2757C95B369}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jinkong.Wx.AspNetCore", "src\Jinkong.Wx.AspNetCore\Jinkong.Wx.AspNetCore.csproj", "{63743144-3D10-4C88-9A5A-C2757C95B369}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jinkong.Payment", "src\Jinkong.Payment\Jinkong.Payment.csproj", "{27C633A2-FF1D-4D20-8FE5-B0EE386F26BF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jinkong.Payment", "src\Jinkong.Payment\Jinkong.Payment.csproj", "{27C633A2-FF1D-4D20-8FE5-B0EE386F26BF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "pay", "pay", "{20A8977F-0D09-432B-A355-770C91D55EB8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jinkong.Payment.Abstract", "src\Jinkong.Payment.Abstract\Jinkong.Payment.Abstract.csproj", "{59439F41-4504-432D-9423-97EF72106832}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jinkong.Payment.Abstract", "src\Jinkong.Payment.Abstract\Jinkong.Payment.Abstract.csproj", "{59439F41-4504-432D-9423-97EF72106832}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jinkong.Payment.EfStore", "src\Jinkong.Payment.EfStore\Jinkong.Payment.EfStore.csproj", "{9008FB3B-DDD0-4405-B12E-C69673C86669}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jinkong.Payment.EfStore", "src\Jinkong.Payment.EfStore\Jinkong.Payment.EfStore.csproj", "{9008FB3B-DDD0-4405-B12E-C69673C86669}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jinkong.Version.Postgres", "src\Jinkong.Version.Postgres\Jinkong.Version.Postgres.csproj", "{A545BA41-BF41-470F-BAE1-D8EEC409DB9F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jinkong.Version.Postgres", "src\Jinkong.Version.Postgres\Jinkong.Version.Postgres.csproj", "{A545BA41-BF41-470F-BAE1-D8EEC409DB9F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jinkong.AliyunOss", "src\Jinkong.AliyunOss\Jinkong.AliyunOss.csproj", "{8624EE4C-E9C1-45BE-A76B-FEF970997480}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jinkong.AliyunOss", "src\Jinkong.AliyunOss\Jinkong.AliyunOss.csproj", "{8624EE4C-E9C1-45BE-A76B-FEF970997480}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jinkong.NLogger.Postgresql", "src\Jinkong.NLogger.Postgresql\Jinkong.NLogger.Postgresql.csproj", "{BB65202E-1752-4B14-AAAC-9FD2A527E9BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jinkong.NLogger.Postgresql", "src\Jinkong.NLogger.Postgresql\Jinkong.NLogger.Postgresql.csproj", "{BB65202E-1752-4B14-AAAC-9FD2A527E9BD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solution", "solution", "{F227A2D2-E731-48B0-95E8-16D43CE3D00A}"
+	ProjectSection(SolutionItems) = preProject
+		common.xml = common.xml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
