@@ -59,7 +59,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jinkong.AliyunOss", "src\Ji
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jinkong.NLogger.Postgresql", "src\Jinkong.NLogger.Postgresql\Jinkong.NLogger.Postgresql.csproj", "{BB65202E-1752-4B14-AAAC-9FD2A527E9BD}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solution", "solution", "{F227A2D2-E731-48B0-95E8-16D43CE3D00A}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solution items", "solution items", "{F227A2D2-E731-48B0-95E8-16D43CE3D00A}"
 	ProjectSection(SolutionItems) = preProject
 		common.xml = common.xml
 	EndProjectSection
