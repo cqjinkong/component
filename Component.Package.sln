@@ -53,7 +53,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jinkong.Payment.EfStore", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jinkong.Version.Postgres", "src\Jinkong.Version.Postgres\Jinkong.Version.Postgres.csproj", "{A545BA41-BF41-470F-BAE1-D8EEC409DB9F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jinkong.AliyunOss", "src\Jinkong.AliyunOss\Jinkong.AliyunOss.csproj", "{B6806F2C-062B-4A8E-A36F-BC8794510AD1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jinkong.AliyunOss", "src\Jinkong.AliyunOss\Jinkong.AliyunOss.csproj", "{8624EE4C-E9C1-45BE-A76B-FEF970997480}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jinkong.NLogger.Postgresql", "src\Jinkong.NLogger.Postgresql\Jinkong.NLogger.Postgresql.csproj", "{BB65202E-1752-4B14-AAAC-9FD2A527E9BD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -149,10 +151,14 @@ Global
 		{A545BA41-BF41-470F-BAE1-D8EEC409DB9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A545BA41-BF41-470F-BAE1-D8EEC409DB9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A545BA41-BF41-470F-BAE1-D8EEC409DB9F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B6806F2C-062B-4A8E-A36F-BC8794510AD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B6806F2C-062B-4A8E-A36F-BC8794510AD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B6806F2C-062B-4A8E-A36F-BC8794510AD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B6806F2C-062B-4A8E-A36F-BC8794510AD1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8624EE4C-E9C1-45BE-A76B-FEF970997480}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8624EE4C-E9C1-45BE-A76B-FEF970997480}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8624EE4C-E9C1-45BE-A76B-FEF970997480}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8624EE4C-E9C1-45BE-A76B-FEF970997480}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB65202E-1752-4B14-AAAC-9FD2A527E9BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB65202E-1752-4B14-AAAC-9FD2A527E9BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB65202E-1752-4B14-AAAC-9FD2A527E9BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB65202E-1752-4B14-AAAC-9FD2A527E9BD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
