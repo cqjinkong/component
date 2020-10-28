@@ -59,7 +59,7 @@ namespace Jinkong.NLogger
                 nLogXmlConfigContent = sm.ReadToEnd();
             }
 
-            string filename = $"./nlog.config";
+            string filename = Path.Combine(Directory.GetCurrentDirectory(), "nlog.config");
 
             StringBuilder ignores = new StringBuilder();
             if (!loggingOptions.Ignores.IsNullOrEmpty())
@@ -80,7 +80,6 @@ namespace Jinkong.NLogger
             NLogBuilder.ConfigureNLog(filename);
 
             #endregion
-
 
             return kernelServices;
         }
