@@ -59,7 +59,7 @@ namespace Jinkong.NLogger
                 nLogXmlConfigContent = sm.ReadToEnd();
             }
 
-            string filename = $"./nlog.config";
+            string filename = Path.Combine(Directory.GetCurrentDirectory(), "nlog.config");
 
             StringBuilder ignores = new StringBuilder();
             if (!loggingOptions.Ignores.IsNullOrEmpty())
@@ -73,14 +73,15 @@ namespace Jinkong.NLogger
             // 格式化配置文件
             nLogXmlConfigContent = nLogXmlConfigContent.RazorFormat(new
             {
-                loggingOptions.Email, loggingOptions.Conn, Ignores = ignores.ToString()
+                loggingOptions.Email,
+                loggingOptions.Conn,
+                Ignores = ignores.ToString()
             });
             File.WriteAllText(filename, nLogXmlConfigContent, Encoding.UTF8);
 
             NLogBuilder.ConfigureNLog(filename);
 
             #endregion
-
 
             return kernelServices;
         }

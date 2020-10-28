@@ -152,8 +152,7 @@ namespace Jinkong.RC.Config
 
             await client.Start();
         }
-
-        public static async void UseRCRealTimeUpdate(this IApplicationBuilder app)
+        public static void UseRCRealTimeUpdate(this IApplicationBuilder app)
         {
             var options = app.ApplicationServices.GetRequiredService<IOptions<RCOptions>>().Value;
             UseRCRealTimeUpdate(app, options.AppId, options.AppKey, options.Websocket);

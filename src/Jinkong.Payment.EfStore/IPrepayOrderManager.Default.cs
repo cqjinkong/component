@@ -9,10 +9,10 @@ using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Shashlik.EventBus;
+using Shashlik.AutoMapper;
 using Shashlik.Kernel;
-using Shashlik.Mapper;
 using Shashlik.Utils.Extensions;
+using Shashlik.EventBus;
 
 namespace Jinkong.Payment.EfStore
 {

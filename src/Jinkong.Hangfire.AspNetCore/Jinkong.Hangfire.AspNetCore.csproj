@@ -8,7 +8,7 @@
     <ItemGroup>
         <PackageReference Include="Hangfire.AspNetCore" Version="1.7.17" />
         <PackageReference Include="HangFire.Core" Version="1.7.17" />
-        <PackageReference Include="Shashlik.AspNetCore" Version="0.1.0-preview-*" />
+        <PackageReference Include="Shashlik.AspNetCore" Version="0.1.0-preview-00019" />
     </ItemGroup>
 
     <ItemGroup>
