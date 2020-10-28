@@ -1,4 +1,4 @@
-﻿using Shashlik.Mapper;
+﻿using Shashlik.AutoMapper;
 
 // ReSharper disable CheckNamespace
 

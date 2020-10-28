@@ -7,9 +7,10 @@
 
 
     <ItemGroup>
-        <PackageReference Include="Shashlik.Mapper" Version="0.1.0-preview-*"/>
-        <PackageReference Include="Shashlik.EventBus" Version="0.1.0-preview-*"/>
-        <PackageReference Include="Shashlik.Pager" Version="0.1.0-preview-*"/>
+        <PackageReference Include="Shashlik.AutoMapper" Version="0.1.0-preview-00019"/>
+        <PackageReference Include="Shashlik.EventBus" Version="0.1.0-preview-00019"/>
+        <PackageReference Include="Shashlik.Pager" Version="0.1.0-preview-00019"/>
+        <PackageReference Include="Shashlik.Kernel" Version="0.1.0-preview-00019"/>
     </ItemGroup>
 
 </Project>
