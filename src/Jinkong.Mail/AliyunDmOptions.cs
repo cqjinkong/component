@@ -9,11 +9,13 @@ namespace Jinkong.Mail
         /// <summary>
         /// 是否启用
         /// </summary>
-        public bool Enable { get; set; }
+        public bool Enable { get; set; } = true;
+
         /// <summary>
         /// 访问密钥ID
         /// </summary>
         public string AccessId { get; set; }
+
         /// <summary>
         /// 访问密钥
         /// </summary>
@@ -30,24 +32,25 @@ namespace Jinkong.Mail
         public string FromAlias { get; set; }
 
         public List<_Limit> Limits { get; set; }
-    }
 
+        public class _Limit
+        {
+            public string Subject { get; set; }
 
-    public class _Limit
-    {
-        public string Subject { get; set; }
+            /// <summary>
+            /// 每天可以发多少次,空不限制
+            /// </summary>
+            public int? DayLimitCount { get; set; }
 
-        /// <summary>
-        /// 每天可以发多少次,空不限制
-        /// </summary>
-        public int? DayLimitCount { get; set; }
-        /// <summary>
-        /// 每小时可以发多少次,空不限制
-        /// </summary>
-        public int? HourLimitCount { get; set; }
-        /// <summary>
-        /// 每分钟可以发多少次,空不限制
-        /// </summary>
-        public int? MinuteLimitCount { get; set; }
+            /// <summary>
+            /// 每小时可以发多少次,空不限制
+            /// </summary>
+            public int? HourLimitCount { get; set; }
+
+            /// <summary>
+            /// 每分钟可以发多少次,空不限制
+            /// </summary>
+            public int? MinuteLimitCount { get; set; }
+        }
     }
 }

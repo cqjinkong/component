@@ -8,11 +8,14 @@ using Jinkong.Mail.Aliyun;
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Shashlik.Kernel.Attributes;
 using Shashlik.Kernel.Dependency;
 using Shashlik.Utils.Extensions;
 
 namespace Jinkong.Mail
 {
+    [ConditionOnProperty(typeof(bool), "Jinkong.Mail.AliyunDm.Enable", true, DefaultValue = true)]
+    [ConditionDependsOn(typeof(IDistributedCache))]
     public class AliyunMail : IMail, ITransient
     {
         private AliyunDmOptions Options { get; }
@@ -29,8 +32,8 @@ namespace Jinkong.Mail
             Cache = cache;
         }
 
-        const string CachePrefix = "MAIL_LIMIT:";
-        const int OneDaySeconds = 60 * 60 * 24;
+        private const string CachePrefix = "MAIL_LIMIT:";
+        private const int OneDaySeconds = 60 * 60 * 24;
 
         public void Send(string address, string subject, string content)
         {
