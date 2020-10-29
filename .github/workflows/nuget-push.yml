@@ -24,4 +24,4 @@ jobs:
       - name: Pack
         run: dotnet pack ./Component.Package.sln -p:SymbolPackageFormat=snupkg --include-symbols  --include-source  --configuration Release --no-restore --output ./nugetPackages
       - name: Publish
-        run: dotnet nuget push "./nugetPackages/*.symbols.nupkg" -k ${{ secrets.NUGET }} -s https://api.nuget.org/v3/index.json
+        run: dotnet nuget push "./nugetPackages/*.nupkg" -k ${{ secrets.NUGET }} -s https://api.nuget.org/v3/index.json
