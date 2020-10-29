@@ -17,7 +17,7 @@
     <PackageReference Include="Senparc.Weixin.MP" Version="16.10.601" />
     <PackageReference Include="Senparc.Weixin.TenPay" Version="1.5.600" />
     <PackageReference Include="Senparc.Weixin.WxOpen" Version="3.8.601" />
-    <PackageReference Include="Shashlik.Kernel" Version="0.1.0-preview-00021" />
-    <PackageReference Include="Shashlik.RazorFormat" Version="0.1.0-preview-00021" />
+    <PackageReference Include="Shashlik.Kernel" Version="0.1.0-preview-00024" />
+    <PackageReference Include="Shashlik.RazorFormat" Version="0.1.0-preview-00024" />
   </ItemGroup>
 </Project>

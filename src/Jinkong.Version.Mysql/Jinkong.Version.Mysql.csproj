@@ -7,7 +7,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.9" />
-    <PackageReference Include="Shashlik.Redis" Version="0.1.0-preview-00021" />
+    <PackageReference Include="Shashlik.Redis" Version="0.1.0-preview-00024" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.2.3" />
   </ItemGroup>
 
