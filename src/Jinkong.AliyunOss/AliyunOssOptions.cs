@@ -1,4 +1,4 @@
-﻿﻿using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Shashlik.Kernel.Attributes;
 
 // ReSharper disable IdentifierTypo
@@ -6,7 +6,7 @@ using Shashlik.Kernel.Attributes;
 
 namespace Jinkong.AliyunOss
 {
-    [AutoOptions("Shashlik.AliyunOss")]
+    [AutoOptions("Jinkong.AliyunOss")]
     public class AliyunOssOptions
     {
         public bool Enable { get; set; }
@@ -47,7 +47,7 @@ namespace Jinkong.AliyunOss
             /// 主机URL
             /// </summary>
             public string Host { get; set; }
-            
+
             /// <summary>
             /// cdn域名
             /// </summary>
