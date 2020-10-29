@@ -24,4 +24,4 @@ jobs:
       - name: Pack
         run: dotnet pack ./Component.Package.sln --include-source --configuration Release --no-restore --output ./nugetPackages
       - name: Publish
-        run: dotnet nuget push --skip-duplicate "./nugetPackages/*.nupkg" -k ${{ secrets.NUGET }} -s https://api.nuget.org/v3/index.json
+        run: dotnet nuget push --skip-duplicate "./nugetPackages/*.symbols.nupkg" -k ${{ secrets.NUGET }} -s https://api.nuget.org/v3/index.json
