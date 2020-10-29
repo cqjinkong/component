@@ -85,9 +85,10 @@ namespace Jinkong.Mail
             var minute = DateTime.Now.Minute;
             var second = DateTime.Now.Second;
 
-            if (limit != null && (limit.DayLimitCount.HasValue || limit.HourLimitCount.HasValue || limit.MinuteLimitCount.HasValue))
+            if (limit != null && (limit.DayLimitCount.HasValue || limit.HourLimitCount.HasValue ||
+                                  limit.MinuteLimitCount.HasValue))
             {
-                var smsLimit = Cache.GetObjectAsync<MailLimit>(key).GetAwaiter().GetResult();
+                var smsLimit = Cache.GetObjectWithJson<MailLimit>(key);
                 if (smsLimit == null)
                     return true;
 
@@ -99,12 +100,14 @@ namespace Jinkong.Mail
                     return false;
                 }
 
-                if (limit.HourLimitCount.HasValue && smsLimit.Records.Count(r => r.Hour == hour) >= limit.HourLimitCount)
+                if (limit.HourLimitCount.HasValue &&
+                    smsLimit.Records.Count(r => r.Hour == hour) >= limit.HourLimitCount)
                 {
                     return false;
                 }
 
-                if (limit.MinuteLimitCount.HasValue && smsLimit.Records.Count(r => r.Hour == hour && r.Minute == minute) >= limit.MinuteLimitCount)
+                if (limit.MinuteLimitCount.HasValue &&
+                    smsLimit.Records.Count(r => r.Hour == hour && r.Minute == minute) >= limit.MinuteLimitCount)
                 {
                     return false;
                 }
@@ -124,7 +127,7 @@ namespace Jinkong.Mail
             var minute = DateTime.Now.Minute;
             var second = DateTime.Now.Second;
 
-            var mailLimit = Cache.GetObjectAsync<MailLimit>(key).GetAwaiter().GetResult();
+            var mailLimit = Cache.GetObjectWithJson<MailLimit>(key);
             if (mailLimit == null)
                 mailLimit = new MailLimit
                 {
@@ -137,7 +140,7 @@ namespace Jinkong.Mail
                 Minute = minute
             });
 
-            Cache.SetObjectAsync(key, mailLimit, DateTimeOffset.Now.Date.AddDays(1)).Wait();
+            Cache.SetObjectWithJson(key, mailLimit, DateTimeOffset.Now.Date.AddDays(1));
         }
     }
 }

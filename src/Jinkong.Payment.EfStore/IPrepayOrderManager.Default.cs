@@ -151,7 +151,7 @@ namespace Jinkong.Payment.EfStore
 
             var cacheKey = prepayCacheKey.Format(order.Id, input.Channel, input.AppId, mch.MchId);
             // 缓存中查看有没有支付对应的支付数据,有就直接返回,没有就调用对应的支付通道并获取
-            var prepayData = await DistributedCache.GetObjectAsync<PrepayData>(cacheKey);
+            var prepayData = await DistributedCache.GetObjectWithJsonAsync<PrepayData>(cacheKey);
             if (prepayData == null)
             {
                 var oldLocalTradeNo = order.CurrentPayLocalTradeNo;
@@ -190,7 +190,7 @@ namespace Jinkong.Payment.EfStore
 
                 order.CurrentPayLocalTradeNo = newLocalTradeNo;
                 prepayData = await payment.GetPrepayData(payParams);
-                await DistributedCache.SetObjectAsync(cacheKey, prepayData, DateTimeOffset.Now.AddHours(1));
+                await DistributedCache.SetObjectWithJsonAsync(cacheKey, prepayData, DateTimeOffset.Now.AddHours(1));
             }
 
             try

@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Shashlik.Response" Version="0.1.0-preview-00019" />
+    <PackageReference Include="Shashlik.Response" Version="0.1.0-preview-00021" />
   </ItemGroup>
 
   <ItemGroup>
