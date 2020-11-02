@@ -1,16 +1,16 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <Import Project="..\..\common.xml"/>
-<PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
-  </PropertyGroup>
+    <Import Project="..\..\common.xml"/>
+    <PropertyGroup>
+        <TargetFramework>netstandard2.1</TargetFramework>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Shashlik.Utils" Version="0.1.0-preview-00029" />
-    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="3.1.9" />
-  </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Shashlik.Utils" Version="0.1.0-preview-00031"/>
+        <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="3.1.9"/>
+    </ItemGroup>
 
-  <ItemGroup>
-  </ItemGroup>
+    <ItemGroup>
+    </ItemGroup>
 
 </Project>

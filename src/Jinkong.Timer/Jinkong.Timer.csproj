@@ -1,12 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <Import Project="..\..\common.xml" />
-<PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
-  </PropertyGroup>
+    <Import Project="..\..\common.xml"/>
+    <PropertyGroup>
+        <TargetFramework>netstandard2.1</TargetFramework>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Shashlik.Kernel" Version="0.1.0-preview-00029" />
-  </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Shashlik.Kernel" Version="0.1.0-preview-00031"/>
+    </ItemGroup>
 
 </Project>
