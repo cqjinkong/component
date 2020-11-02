@@ -17,6 +17,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Shashlik.Utils" Version="0.1.0-preview-00028"/>
+        <PackageReference Include="Shashlik.Utils" Version="0.1.0-preview-00029"/>
     </ItemGroup>
 </Project>
