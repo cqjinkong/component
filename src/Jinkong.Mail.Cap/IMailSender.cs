@@ -1,8 +1,8 @@
-﻿using Shashlik.EventBus;
+﻿using Shashlik.Cap;
 using Shashlik.Kernel.Dependency;
 using Shashlik.Response;
 
-namespace Jinkong.Mail.Event
+namespace Jinkong.Mail.Cap
 {
     /// <summary>
     /// 邮件发送
@@ -22,17 +22,20 @@ namespace Jinkong.Mail.Event
     {
         private IEventPublisher EventPublisher { get; }
         private IMail Mail { get; }
+
         public DefaultMailSender(IEventPublisher eventPublisher, IMail mail)
         {
             EventPublisher = eventPublisher;
             Mail = mail;
         }
+
         public void Send(string address, string subject, string content)
         {
             if (!Mail.LimitCheck(address, subject))
             {
                 throw ResponseException.LogicalError("操作过于频繁");
             }
+
             EventPublisher.Publish(new SendMailEvent()
             {
                 Address = address,
@@ -41,6 +44,4 @@ namespace Jinkong.Mail.Event
             });
         }
     }
-
-
 }

@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
-using Shashlik.EventBus;
+using Shashlik.Cap;
 
-namespace Jinkong.Mail.Event
+namespace Jinkong.Mail.Cap
 {
     public class SendMailEventForExecuteHandler : IEventHandler<SendMailEvent>
     {

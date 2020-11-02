@@ -1,19 +1,20 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-    <Import Project="..\..\common.xml" />
+    <Import Project="..\..\common.xml"/>
     <PropertyGroup>
         <TargetFramework>netstandard2.1</TargetFramework>
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Jinkong.Payment.Abstract\Jinkong.Payment.Abstract.csproj" />
+        <ProjectReference Include="..\Jinkong.Payment.Abstract\Jinkong.Payment.Abstract.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.9" />
-        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.9" />
-        <PackageReference Include="Shashlik.EventBus" Version="0.1.0-preview-00024" />
-<!--        <PackageReference Include="Shashlik.Pager" Version="0.1.0-preview-00024" />-->
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.9"/>
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.9"/>
+        <PackageReference Include="Shashlik.Cap" Version="0.1.0-preview-00028"/>
+        <PackageReference Include="Shashlik.Kernel" Version="0.1.0-preview-00028"/>
+
     </ItemGroup>
 
 </Project>

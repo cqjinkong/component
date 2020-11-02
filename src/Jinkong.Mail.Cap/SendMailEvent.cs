@@ -1,6 +1,6 @@
-﻿using Shashlik.EventBus;
+﻿using Shashlik.Cap;
 
-namespace Jinkong.Mail.Event
+namespace Jinkong.Mail.Cap
 {
     public class SendMailEvent : IEvent
     {

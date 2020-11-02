@@ -6,7 +6,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Shashlik.Kernel" Version="0.1.0-preview-00024"/>
+        <PackageReference Include="Shashlik.Kernel" Version="0.1.0-preview-00028"/>
     </ItemGroup>
 
 </Project>

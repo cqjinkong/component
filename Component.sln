@@ -59,7 +59,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jinkong.AliyunOss", "src\Ji
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jinkong.NLogger.Postgresql", "src\Jinkong.NLogger.Postgresql\Jinkong.NLogger.Postgresql.csproj", "{BB65202E-1752-4B14-AAAC-9FD2A527E9BD}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solution items", "solution items", "{F227A2D2-E731-48B0-95E8-16D43CE3D00A}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{F227A2D2-E731-48B0-95E8-16D43CE3D00A}"
 	ProjectSection(SolutionItems) = preProject
 		common.xml = common.xml
 		.github\workflows\nuget-push.yml = .github\workflows\nuget-push.yml
@@ -67,7 +67,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solution items", "solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jinkong.Mail", "src\Jinkong.Mail\Jinkong.Mail.csproj", "{2C378718-6A0F-4DD2-B01D-D45BFF60E179}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jinkong.Mail.Event", "src\Jinkong.Mail.Event\Jinkong.Mail.Event.csproj", "{D2F913F6-C50B-49A5-A540-EFB029A52539}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jinkong.Mail.Cap", "src\Jinkong.Mail.Cap\Jinkong.Mail.Cap.csproj", "{DF8E8ACA-3BF1-4861-87D2-F7641B30274C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -179,10 +179,10 @@ Global
 		{2C378718-6A0F-4DD2-B01D-D45BFF60E179}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C378718-6A0F-4DD2-B01D-D45BFF60E179}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2C378718-6A0F-4DD2-B01D-D45BFF60E179}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D2F913F6-C50B-49A5-A540-EFB029A52539}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D2F913F6-C50B-49A5-A540-EFB029A52539}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D2F913F6-C50B-49A5-A540-EFB029A52539}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D2F913F6-C50B-49A5-A540-EFB029A52539}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF8E8ACA-3BF1-4861-87D2-F7641B30274C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF8E8ACA-3BF1-4861-87D2-F7641B30274C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF8E8ACA-3BF1-4861-87D2-F7641B30274C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF8E8ACA-3BF1-4861-87D2-F7641B30274C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -6,7 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="aliyun-net-sdk-core" Version="1.5.10" />
-    <PackageReference Include="Shashlik.EventBus" Version="0.1.0-preview-00024" />
+    <PackageReference Include="Shashlik.Kernel" Version="0.1.0-preview-00028" />
   </ItemGroup>
 
 </Project>

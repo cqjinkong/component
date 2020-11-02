@@ -4,7 +4,7 @@ using System.Linq;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
-using Shashlik.EventBus;
+using Shashlik.Cap;
 
 namespace Jinkong.Payment
 {

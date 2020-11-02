@@ -1,6 +1,6 @@
 ﻿// ReSharper disable CheckNamespace
 
-using Shashlik.EventBus;
+using Shashlik.Cap;
 
 namespace Jinkong.Payment
 {

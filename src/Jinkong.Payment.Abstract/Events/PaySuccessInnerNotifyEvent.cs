@@ -1,11 +1,13 @@
 ﻿// ReSharper disable CheckNamespace
 
+using Shashlik.Cap;
+
 namespace Jinkong.Payment
 {
     /// <summary>
     /// 支付回调成功事件
     /// </summary>
-    public class PaySuccessInnerNotifyEvent : Shashlik.EventBus.IEvent
+    public class PaySuccessInnerNotifyEvent : IEvent
     {
         public PaySuccessInnerNotifyEvent(PayResult notify)
         {
