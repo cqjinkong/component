@@ -12,8 +12,8 @@
     <ItemGroup>
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.9"/>
         <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.9"/>
-        <PackageReference Include="Shashlik.Cap" Version="0.1.0-preview-00031"/>
-        <PackageReference Include="Shashlik.Kernel" Version="0.1.0-preview-00031"/>
+        <PackageReference Include="Shashlik.Cap" Version="0.1.0-preview-*"/>
+        <PackageReference Include="Shashlik.Kernel" Version="0.1.0-preview-*"/>
 
     </ItemGroup>
 

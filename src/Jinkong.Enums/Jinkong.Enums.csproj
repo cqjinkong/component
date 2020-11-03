@@ -6,7 +6,7 @@
   </PropertyGroup>
   <ItemGroup>
 
-    <PackageReference Include="Shashlik.Kernel" Version="0.1.0-preview-00031" />
+    <PackageReference Include="Shashlik.Kernel" Version="0.1.0-preview-*" />
     <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="3.1.9" />
   </ItemGroup>
 
