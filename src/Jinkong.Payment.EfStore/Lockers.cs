@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Health.Payment
+﻿namespace Jinkong.Payment.EfStore
 {
     public class Lockers
     {
