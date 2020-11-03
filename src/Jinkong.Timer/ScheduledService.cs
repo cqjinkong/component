@@ -15,9 +15,8 @@ namespace Sbt.Invoice.Service
     /// </summary>
     public class ScheduledService : IDisposable, Shashlik.Kernel.Dependency.ISingleton
     {
-        ILoggerFactory LoggerFactory { get; }
-
-        static ConcurrentDictionary<Type, (Timer timer, TimeSpan interval, Type timerType)> Timers { get; }
+        private ILoggerFactory LoggerFactory { get; }
+        private static ConcurrentDictionary<Type, (Timer timer, TimeSpan interval, Type timerType)> Timers { get; }
 
         static ScheduledService()
         {
@@ -27,8 +26,8 @@ namespace Sbt.Invoice.Service
         public ScheduledService(ILoggerFactory loggerFactory)
         {
             // 应用退出时停止定时器
-            AppDomain.CurrentDomain.ProcessExit += (object sender, EventArgs e) => this.Dispose();
-            this.LoggerFactory = loggerFactory;
+            AppDomain.CurrentDomain.ProcessExit += (sender, e) => Dispose();
+            LoggerFactory = loggerFactory;
         }
 
         public void AddTimer(ITimer timerInstance)
@@ -54,9 +53,9 @@ namespace Sbt.Invoice.Service
                 }, null, Timeout.Infinite, 0), timerInstance.Interval, timerType));
         }
 
-        public void Remove(TypeInfo timer)
+        public void Remove(Type timer)
         {
-            Timers.TryRemove(timer.GetType(), out _);
+            Timers.TryRemove(timer, out _);
         }
 
         public void Start()

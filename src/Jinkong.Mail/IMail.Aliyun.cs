@@ -16,7 +16,8 @@ namespace Jinkong.Mail
 {
     [ConditionOnProperty(typeof(bool), "Jinkong.Mail.AliyunDm.Enable", true, DefaultValue = true)]
     [ConditionDependsOn(typeof(IDistributedCache))]
-    public class AliyunMail : IMail, ITransient
+    [Order(210)]
+    public class AliyunMail : IMail, ISingleton
     {
         private AliyunDmOptions Options { get; }
         private IAcsClient Client { get; }
@@ -54,7 +55,7 @@ namespace Jinkong.Mail
             catch (ClientException e)
             {
                 Logger.LogError(e, "阿里云邮件发送失败");
-                throw e;
+                throw;
             }
         }
 

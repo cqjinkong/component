@@ -8,8 +8,7 @@ namespace Jinkong.NLogger
     {
         public void Configure(IKernelServices kernelService)
         {
-            kernelService.AddNLogWithMysql(kernelService.RootConfiguration.GetSection("Logging:NLog"),
-                autoMigration: true);
+            kernelService.AddNLogWithMysql(kernelService.RootConfiguration.GetSection("Logging:NLog"));
         }
     }
 }
