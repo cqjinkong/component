@@ -61,9 +61,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{F227
 		.github\workflows\nuget-push.yml = .github\workflows\nuget-push.yml
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jinkong.Mail", "src\Jinkong.Mail\Jinkong.Mail.csproj", "{2C378718-6A0F-4DD2-B01D-D45BFF60E179}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jinkong.Mail", "src\Jinkong.Mail\Jinkong.Mail.csproj", "{2C378718-6A0F-4DD2-B01D-D45BFF60E179}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jinkong.Mail.Cap", "src\Jinkong.Mail.Cap\Jinkong.Mail.Cap.csproj", "{DF8E8ACA-3BF1-4861-87D2-F7641B30274C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jinkong.Mail.Cap", "src\Jinkong.Mail.Cap\Jinkong.Mail.Cap.csproj", "{DF8E8ACA-3BF1-4861-87D2-F7641B30274C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jinkong.Mail.EventBus", "src\Jinkong.Mail.EventBus\Jinkong.Mail.EventBus.csproj", "{BCC79271-E45A-4C5F-9AFB-EB02428AB8F3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -171,6 +173,10 @@ Global
 		{DF8E8ACA-3BF1-4861-87D2-F7641B30274C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF8E8ACA-3BF1-4861-87D2-F7641B30274C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DF8E8ACA-3BF1-4861-87D2-F7641B30274C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCC79271-E45A-4C5F-9AFB-EB02428AB8F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCC79271-E45A-4C5F-9AFB-EB02428AB8F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCC79271-E45A-4C5F-9AFB-EB02428AB8F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCC79271-E45A-4C5F-9AFB-EB02428AB8F3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
