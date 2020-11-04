@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using Shashlik.Kernel.Attributes;
+
 // ReSharper disable AutoPropertyCanBeMadeGetOnly.Global
 
 // ReSharper disable ClassNeverInstantiated.Global
@@ -15,6 +17,11 @@ namespace Jinkong.NLogger
         /// 日志数据库连接字符串
         /// </summary>
         public string Conn { get; set; }
+
+        /// <summary>
+        /// 是否自动迁移
+        /// </summary>
+        public bool AutoMigration { get; set; }
 
         /// <summary>
         /// 忽略的logger,不记录
