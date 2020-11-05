@@ -67,6 +67,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jinkong.Mail.Cap", "src\Jin
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jinkong.Mail.EventBus", "src\Jinkong.Mail.EventBus\Jinkong.Mail.EventBus.csproj", "{BCC79271-E45A-4C5F-9AFB-EB02428AB8F3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jinkong.JsonPatch", "src\Jinkong.JsonPatch\Jinkong.JsonPatch.csproj", "{5571F51C-66CE-4F14-8BD4-72F174D922C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jinkong.JsonPatch.ModelBinder", "src\Jinkong.JsonPatch.ModelBinder\Jinkong.JsonPatch.ModelBinder.csproj", "{2842063F-4208-4D0F-BC00-B503A9624E1C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -177,6 +181,14 @@ Global
 		{BCC79271-E45A-4C5F-9AFB-EB02428AB8F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BCC79271-E45A-4C5F-9AFB-EB02428AB8F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BCC79271-E45A-4C5F-9AFB-EB02428AB8F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5571F51C-66CE-4F14-8BD4-72F174D922C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5571F51C-66CE-4F14-8BD4-72F174D922C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5571F51C-66CE-4F14-8BD4-72F174D922C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5571F51C-66CE-4F14-8BD4-72F174D922C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2842063F-4208-4D0F-BC00-B503A9624E1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2842063F-4208-4D0F-BC00-B503A9624E1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2842063F-4208-4D0F-BC00-B503A9624E1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2842063F-4208-4D0F-BC00-B503A9624E1C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <Import Project="..\..\common.xml" />
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="Shashlik.Utils" Version="0.1.0-preview-*" />
+        <PackageReference Include="Shashlik.AspNetCore" Version="0.1.0-preview-*" />
+
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\Jinkong.JsonPatch\Jinkong.JsonPatch.csproj" />
+    </ItemGroup>
+
+</Project>
