@@ -50,7 +50,7 @@ namespace Jinkong.AliyunOss
                 Policy = encPolicy,
                 Signature = signature,
                 Host = Options.Host,
-                FileName = fileKey,
+                Key = fileKey,
                 Dir = Path.GetDirectoryName(fileKey),
                 Url = $"{host}/{fileKey}"
             };
