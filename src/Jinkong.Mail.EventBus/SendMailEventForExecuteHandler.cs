@@ -2,10 +2,11 @@
 using System.Threading.Tasks;
 using Jinkong.Mail.EventBus;
 using Shashlik.EventBus;
+using Shashlik.Kernel.Dependency;
 
 namespace Jinkong.Mail.EventBus
 {
-    public class SendMailEventForExecuteHandler : IEventHandler<SendMailEvent>
+    public class SendMailEventForExecuteHandler : IEventHandler<SendMailEvent>, ITransient
     {
         private IMail Mail { get; }
         public SendMailEventForExecuteHandler(IMail mail)
