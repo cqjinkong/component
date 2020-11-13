@@ -2,6 +2,7 @@
 using Shashlik.EventBus;
 using Shashlik.Kernel.Dependency;
 using Shashlik.Response;
+using Shashlik.Utils.Extensions;
 
 namespace Jinkong.Mail.EventBus
 {
@@ -33,6 +34,10 @@ namespace Jinkong.Mail.EventBus
 
         public void Send(string address, string subject, string content, TransactionContext transactionContext)
         {
+            if (subject.IsNullOrEmpty())
+            {
+                throw ResponseException.ArgError("邮件标题不能为空");
+            }
             if (!Mail.LimitCheck(address, subject))
             {
                 throw ResponseException.LogicalError("操作过于频繁");
