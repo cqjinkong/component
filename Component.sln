@@ -71,6 +71,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jinkong.JsonPatch", "src\Ji
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jinkong.JsonPatch.ModelBinder", "src\Jinkong.JsonPatch.ModelBinder\Jinkong.JsonPatch.ModelBinder.csproj", "{2842063F-4208-4D0F-BC00-B503A9624E1C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jinkong.Pager", "src\Jinkong.Pager\Jinkong.Pager.csproj", "{CE9F2EB6-E9C5-4C0E-BAF8-FECB4AF7B0DC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -189,6 +191,10 @@ Global
 		{2842063F-4208-4D0F-BC00-B503A9624E1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2842063F-4208-4D0F-BC00-B503A9624E1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2842063F-4208-4D0F-BC00-B503A9624E1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE9F2EB6-E9C5-4C0E-BAF8-FECB4AF7B0DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE9F2EB6-E9C5-4C0E-BAF8-FECB4AF7B0DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE9F2EB6-E9C5-4C0E-BAF8-FECB4AF7B0DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE9F2EB6-E9C5-4C0E-BAF8-FECB4AF7B0DC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
