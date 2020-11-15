@@ -26,7 +26,7 @@ namespace Jinkong.Version
         public static IServiceProvider UseVersionManagement<TDbContext>(this IServiceProvider serviceProvider)
             where TDbContext : DbContext
         {
-            using var locking = RedisHelper.Instance.Locking(LockKey, 60);
+            using var locking = RedisHelper.Instance.Lock(LockKey, 60);
             using (var scope = serviceProvider.CreateScope())
             using (var initDbContext = scope.ServiceProvider.GetService<TDbContext>())
                 // 初始化表
@@ -92,7 +92,7 @@ namespace Jinkong.Version
             IDbContextTransaction transaction)
             where TDbContext : DbContext
         {
-            using var locking = RedisHelper.Instance.Locking(LockKey, 60);
+            using var locking = RedisHelper.Instance.Lock(LockKey, 60);
             using (var scope = serviceProvider.CreateScope())
             using (var initDbContext = scope.ServiceProvider.GetService<TDbContext>())
                 // 初始化表
@@ -161,7 +161,7 @@ namespace Jinkong.Version
             Func<IServiceProvider, IDbContextTransaction> tranFunc)
             where TDbContext : DbContext
         {
-            using var locking = RedisHelper.Instance.Locking(LockKey, 60);
+            using var locking = RedisHelper.Instance.Lock(LockKey, 60);
             using (var scope = serviceProvider.CreateScope())
             using (var initDbContext = scope.ServiceProvider.GetService<TDbContext>())
                 // 初始化表

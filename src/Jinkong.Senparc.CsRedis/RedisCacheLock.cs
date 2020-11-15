@@ -44,8 +44,7 @@ namespace Jinkong.Senparc.CsRedis
             try
             {
                 var ttl = GetTotalTtl(_retryCount, _retryDelay);
-                _locker = _client.Locking(_resourceName, lockSecond: (int) TimeSpan.FromMilliseconds(ttl).TotalSeconds,
-                    waitTimeout: (int) _retryDelay.TotalSeconds);
+                _locker = _client.Lock(_resourceName, (int) TimeSpan.FromMilliseconds(ttl).TotalSeconds);
             }
             catch
             {
@@ -83,8 +82,7 @@ namespace Jinkong.Senparc.CsRedis
             try
             {
                 var ttl = GetTotalTtl(_retryCount, _retryDelay);
-                _locker = _client.Locking(_resourceName, lockSecond: (int) TimeSpan.FromMilliseconds(ttl).TotalSeconds,
-                    waitTimeout: (int) _retryDelay.TotalSeconds);
+                _locker = _client.Lock(_resourceName, (int) TimeSpan.FromMilliseconds(ttl).TotalSeconds);
             }
             catch
             {

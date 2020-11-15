@@ -28,14 +28,16 @@ namespace Jinkong.SecurityProxyApi.Controllers
         public async Task<IActionResult> Proxy(RequestObj requestObj, [FromServices] ILogger<RootController> logger)
         {
             if (!settings.IpWhite.IsNullOrWhiteSpace() && settings.IpWhite != "*"
-                && !settings.IpWhiteList.Value.Contains(HttpContext.Connection.RemoteIpAddress.ToString()))
+                                                       && !settings.IpWhiteList.Value.Contains(HttpContext.Connection
+                                                           .RemoteIpAddress.ToString()))
                 return BadRequest($"invalid ip address.");
 
             if (!settings.AllowTargets.IsNullOrWhiteSpace() && settings.AllowTargets != "*")
             {
                 var uri = new Uri(requestObj.TargetUrl.Trim());
 
-                if (!settings.AllowTargetList.Value.Contains($"{uri.Scheme}://{uri.Authority}", StringComparer.OrdinalIgnoreCase))
+                if (!settings.AllowTargetList.Value.Contains($"{uri.Scheme}://{uri.Authority}",
+                    StringComparer.OrdinalIgnoreCase))
                 {
                     return BadRequest($"invalid target.");
                 }
@@ -51,13 +53,14 @@ namespace Jinkong.SecurityProxyApi.Controllers
                 var method = requestObj.Method ?? RestSharp.Method.POST;
                 if (decodedStr == "empty")
                     decodedStr = "";
-                var res = await HttpHelper.Invoke(method, requestObj.TargetUrl, decodedStr, requestObj.ContentType,
-                       requestObj.QueryStrings, requestObj.Headers, requestObj.Cookies,
-                       requestObj.Timeout ?? 60, proxy: null, encoding: Encoding.GetEncoding(requestObj.Encode));
+                var res = await HttpHelper.DoRequest(method, requestObj.TargetUrl, decodedStr, requestObj.ContentType,
+                    requestObj.QueryStrings, requestObj.Headers, requestObj.Cookies,
+                    requestObj.Timeout ?? 60, proxy: null, encoding: Encoding.GetEncoding(requestObj.Encode));
 
                 if (!res.IsSuccessful)
                 {
-                    logger.LogError($"request {requestObj.TargetUrl} response error, method: ${method}, http code:{res.StatusCode}, detail: {res.Content}");
+                    logger.LogError(
+                        $"request {requestObj.TargetUrl} response error, method: ${method}, http code:{res.StatusCode}, detail: {res.Content}");
                     return BadRequest(res.Content);
                 }
 
