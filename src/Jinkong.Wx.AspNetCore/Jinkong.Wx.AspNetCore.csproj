@@ -1,29 +1,19 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-    <Import Project="..\..\common.xml"/>
+    <Import Project="..\..\common.xml" />
     <PropertyGroup>
         <TargetFramework>netcoreapp3.1</TargetFramework>
     </PropertyGroup>
 
     <ItemGroup>
-        <Compile Remove="Controllers\**"/>
-        <EmbeddedResource Remove="Controllers\**"/>
-        <None Remove="Controllers\**"/>
+        <FrameworkReference Include="Microsoft.AspNetCore.App" />
+        <PackageReference Include="Shashlik.Kernel" Version="0.1.0-preview-*" />
+        <PackageReference Include="Shashlik.AspNetCore" Version="0.1.0-preview-*" />
+        <PackageReference Include="Shashlik.Utils" Version="0.1.0-preview-*" />
     </ItemGroup>
 
     <ItemGroup>
-        <Compile Remove="MpMessageContext.cs"/>
-    </ItemGroup>
-
-    <ItemGroup>
-        <FrameworkReference Include="Microsoft.AspNetCore.App"/>
-        <PackageReference Include="Shashlik.Kernel" Version="0.1.0-preview-*"/>
-        <PackageReference Include="Shashlik.AspNetCore" Version="0.1.0-preview-*"/>
-        <PackageReference Include="Shashlik.Utils" Version="0.1.0-preview-*"/>
-    </ItemGroup>
-
-    <ItemGroup>
-        <ProjectReference Include="..\Jinkong.Senparc.CsRedis\Jinkong.Senparc.CsRedis.csproj"/>
-        <ProjectReference Include="..\Jinkong.Wx\Jinkong.Wx.csproj"/>
+        <ProjectReference Include="..\Jinkong.Senparc.CsRedis\Jinkong.Senparc.CsRedis.csproj" />
+        <ProjectReference Include="..\Jinkong.Wx\Jinkong.Wx.csproj" />
     </ItemGroup>
 </Project>
