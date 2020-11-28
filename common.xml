@@ -6,7 +6,7 @@
         <RepositoryUrl>https://github.com/cqjinkong/component</RepositoryUrl>
         <PackageTags>jinkong</PackageTags>
         <Authors>cqjinkong</Authors>
-        <Version>0.1.0-preview-00031</Version>
+        <Version>0.1.0-preview-00032</Version>
     </PropertyGroup>
 
     <!--    see: https://cloud.tencent.com/developer/article/1673096    -->
