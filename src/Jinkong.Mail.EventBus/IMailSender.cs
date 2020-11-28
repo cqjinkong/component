@@ -1,4 +1,4 @@
-﻿using Jinkong.Mail.EventBus;
+﻿#nullable enable
 using Shashlik.EventBus;
 using Shashlik.Kernel.Dependency;
 using Shashlik.Response;
@@ -18,10 +18,11 @@ namespace Jinkong.Mail.EventBus
         /// <param name="subject"></param>
         /// <param name="content"></param>
         /// <param name="transactionContext"></param>
-        void Send(string address, string subject, string content, TransactionContext transactionContext);
+        void Send(string address, string subject, string content, ITransactionContext? transactionContext);
     }
 
-    public class DefaultMailSender : IMailSender, ISingleton
+    [Singleton]
+    public class DefaultMailSender : IMailSender
     {
         private IEventPublisher EventPublisher { get; }
         private IMail Mail { get; }
@@ -32,23 +33,19 @@ namespace Jinkong.Mail.EventBus
             Mail = mail;
         }
 
-        public void Send(string address, string subject, string content, TransactionContext transactionContext)
+        public void Send(string address, string subject, string content, ITransactionContext? transactionContext)
         {
             if (subject.IsNullOrEmpty())
             {
                 throw ResponseException.ArgError("邮件标题不能为空");
             }
+
             if (!Mail.LimitCheck(address, subject))
             {
                 throw ResponseException.LogicalError("操作过于频繁");
             }
 
-            EventPublisher.PublishAsync(new SendMailEvent()
-            {
-                Address = address,
-                Subject = subject,
-                Content = content
-            }, transactionContext).Wait();
+            EventPublisher.PublishAsync(new SendMailEvent() {Address = address, Subject = subject, Content = content}, transactionContext).Wait();
         }
     }
 }

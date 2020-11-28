@@ -2,13 +2,15 @@
 using System.Threading.Tasks;
 using Health.Payment.PayAbstract;
 using Microsoft.Extensions.Hosting;
+using Shashlik.Kernel.Dependency;
 using Shashlik.Utils.Extensions;
 
 // ReSharper disable CheckNamespace
 
 namespace Jinkong.Payment
 {
-    public class WxApp : WxBase, Shashlik.Kernel.Dependency.ITransient
+    [Transient]
+    public class WxApp : WxBase
     {
         public WxApp(IServiceProvider serviceProvider) : base(serviceProvider)
         {

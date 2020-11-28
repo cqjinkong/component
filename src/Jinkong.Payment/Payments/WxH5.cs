@@ -12,7 +12,8 @@ namespace Jinkong.Payment
     /// <summary>
     /// 微信H5支付
     /// </summary>
-    public class WxH5 : WxBase, ITransient
+    [Transient]
+    public class WxH5 : WxBase
     {
         public WxH5(IServiceProvider serviceProvider) : base(serviceProvider)
         {

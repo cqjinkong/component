@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using Shashlik.Kernel.Dependency;
 
 namespace Jinkong.Version
 {
-    public interface IVersion : Shashlik.Kernel.Dependency.ITransient
+    [Transient]
+    public interface IVersion
     {
         /// <summary>
         /// 优先级

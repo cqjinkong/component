@@ -1,8 +1,5 @@
-﻿using System;
-using System.Security.Cryptography;
-using System.Security.Cryptography.X509Certificates;
+﻿using System.Security.Cryptography;
 using System.Text;
-using RSAExtensions;
 using Shashlik.Utils.Helpers;
 
 namespace Jinkong.SecurityProxyClient
@@ -24,10 +21,8 @@ namespace Jinkong.SecurityProxyClient
         /// <returns></returns>
         public static string Encrypt(string data, string publicKey, Encoding encoding)
         {
-            using (var cer = new X509Certificate2(Encoding.UTF8.GetBytes(publicKey)))
-            {
-                return ((RSA) cer.PublicKey.Key).EncryptBigData(data, RSAEncryptionPadding.Pkcs1, encoding);
-            }
+            using var cer = RSAHelper.LoadX509FromPublicCertificate(publicKey);
+            return ((RSA)cer.PublicKey.Key).EncryptBigData(data, RSAEncryptionPadding.Pkcs1, encoding);
         }
 
         /// <summary>
@@ -39,11 +34,17 @@ namespace Jinkong.SecurityProxyClient
         /// <returns></returns>
         public static string Decrypt(string data, string privateKey, Encoding encoding)
         {
-            using (var rsa = RSA.Create(1024))
+            if (!privateKey.Contains("PRIVATE KEY"))
             {
-                rsa.ImportPrivateKey(RSAKeyType.Pkcs8, privateKey, true);
-                return rsa.DecryptBigData(data, RSAEncryptionPadding.Pkcs1, encoding);
+                var sb = new StringBuilder();
+                sb.AppendLine("-----BEGIN PRIVATE KEY-----");
+                sb.AppendLine(privateKey);
+                sb.AppendLine("-----END PRIVATE KEY-----");
+                privateKey = sb.ToString();
             }
+
+            using var rsa = RSAHelper.FromPem(privateKey);
+            return rsa.DecryptBigData(data, RSAEncryptionPadding.Pkcs1, encoding);
         }
 
         /// <summary>
@@ -55,12 +56,17 @@ namespace Jinkong.SecurityProxyClient
         /// <returns></returns>
         public static string Sign(string data, string privateKey, Encoding encoding)
         {
-            using (var rsa = RSA.Create(1024))
+            if (!privateKey.Contains("PRIVATE KEY"))
             {
-                rsa.ImportPrivateKey(RSAKeyType.Pkcs8, privateKey, true);
-                var signed = rsa.SignData(encoding.GetBytes(data), HashAlgorithmName.MD5, RSASignaturePadding.Pkcs1);
-                return Convert.ToBase64String(signed);
+                var sb = new StringBuilder();
+                sb.AppendLine("-----BEGIN PRIVATE KEY-----");
+                sb.AppendLine(privateKey);
+                sb.AppendLine("-----END PRIVATE KEY-----");
+                privateKey = sb.ToString();
             }
+
+            using var rsa = RSAHelper.FromPem(privateKey);
+            return rsa.SignData(data, HashAlgorithmName.MD5, RSASignaturePadding.Pkcs1, encoding);
         }
 
         /// <summary>
@@ -73,14 +79,15 @@ namespace Jinkong.SecurityProxyClient
         /// <returns></returns>
         public static bool Verify(string data, string signature, string publicKey, Encoding encoding)
         {
-            using (var cer = new X509Certificate2(Encoding.UTF8.GetBytes(publicKey)))
-                return ((RSA) cer.PublicKey.Key)
-                    .VerifyData(
-                        encoding.GetBytes(data),
-                        Convert.FromBase64String(signature),
-                        HashAlgorithmName.MD5,
-                        RSASignaturePadding.Pkcs1
-                    );
+            using var cer = RSAHelper.LoadX509FromPublicCertificate(publicKey);
+            return ((RSA)cer.PublicKey.Key)
+                .VerifySignData(
+                    data,
+                    signature,
+                    HashAlgorithmName.MD5,
+                    RSASignaturePadding.Pkcs1,
+                    encoding
+                );
         }
     }
 }

@@ -1,7 +1,11 @@
 ﻿using Microsoft.Extensions.Options;
+using Shashlik.Kernel.Attributes;
+using Shashlik.Kernel.Dependency;
 
-namespace TencentFaceId.Sdk
+namespace Jinkong.TencentFaceId
 {
+    [ConditionOnProperty(typeof(bool), "Jinkong.FaceId.UseEmpty", true, DefaultValue = false)]
+    [Singleton(typeof(DefaultTencentFaceId))]
     public class EmptyFaceId : DefaultTencentFaceId
     {
         public override (bool success, string desc) E2(string idCard, string realName)
@@ -19,7 +23,7 @@ namespace TencentFaceId.Sdk
             return (true, "success");
         }
 
-        public EmptyFaceId(IOptions<TencentFaceIdOptions> options) : base(options)
+        public EmptyFaceId(IOptionsMonitor<TencentFaceIdOptions> options) : base(options)
         {
         }
     }

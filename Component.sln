@@ -73,6 +73,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jinkong.JsonPatch.ModelBind
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jinkong.Pager", "src\Jinkong.Pager\Jinkong.Pager.csproj", "{CE9F2EB6-E9C5-4C0E-BAF8-FECB4AF7B0DC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jinkong.Utils", "src\Jinkong.Utils\Jinkong.Utils.csproj", "{CE7B72DA-C640-47DF-A4EA-2D2262A14271}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jinkong.TencentFaceId", "src\Jinkong.TencentFaceId\Jinkong.TencentFaceId.csproj", "{1F4C5200-DD3A-4686-8546-FB41DEB30FAF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -195,6 +199,14 @@ Global
 		{CE9F2EB6-E9C5-4C0E-BAF8-FECB4AF7B0DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CE9F2EB6-E9C5-4C0E-BAF8-FECB4AF7B0DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CE9F2EB6-E9C5-4C0E-BAF8-FECB4AF7B0DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE7B72DA-C640-47DF-A4EA-2D2262A14271}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE7B72DA-C640-47DF-A4EA-2D2262A14271}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE7B72DA-C640-47DF-A4EA-2D2262A14271}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE7B72DA-C640-47DF-A4EA-2D2262A14271}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F4C5200-DD3A-4686-8546-FB41DEB30FAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F4C5200-DD3A-4686-8546-FB41DEB30FAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F4C5200-DD3A-4686-8546-FB41DEB30FAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F4C5200-DD3A-4686-8546-FB41DEB30FAF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

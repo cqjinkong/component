@@ -8,7 +8,8 @@ using Shashlik.Kernel.Dependency;
 
 namespace Jinkong.Payment
 {
-    public class WxNative : WxBase, ITransient
+    [Transient]
+    public class WxNative : WxBase
     {
         public WxNative(IServiceProvider serviceProvider) : base(serviceProvider)
         {

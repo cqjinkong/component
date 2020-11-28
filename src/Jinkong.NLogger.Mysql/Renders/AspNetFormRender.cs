@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using NLog;
 using NLog.LayoutRenderers;
+using Shashlik.Kernel.Dependency;
 using Shashlik.Utils.Extensions;
 
 namespace Jinkong.NLogger.Mysql.Renders
@@ -22,7 +23,8 @@ namespace Jinkong.NLogger.Mysql.Renders
         }
     }
 
-    public class AspNetForm : Shashlik.Kernel.Dependency.IScoped
+    [Scoped]
+    public class AspNetForm
     {
         public AspNetForm(IHttpContextAccessor httpContextAccessor)
         {

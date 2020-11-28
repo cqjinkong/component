@@ -5,6 +5,7 @@ using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Shashlik.Kernel;
+using Shashlik.Kernel.Dependency;
 
 // ReSharper disable CheckNamespace
 
@@ -13,7 +14,8 @@ namespace Sbt.Invoice.Service
     /// <summary>
     /// 定时任务执行基类,继承就可以,因为这是一个单例,所以大部分的services包括db都是不能注入的.
     /// </summary>
-    public class ScheduledService : IDisposable, Shashlik.Kernel.Dependency.ISingleton
+    [Singleton]
+    public class ScheduledService : IDisposable
     {
         private ILoggerFactory LoggerFactory { get; }
         private static ConcurrentDictionary<Type, (Timer timer, TimeSpan interval, Type timerType)> Timers { get; }

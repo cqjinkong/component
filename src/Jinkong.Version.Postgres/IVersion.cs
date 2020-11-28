@@ -5,7 +5,8 @@ using Shashlik.Kernel.Dependency;
 
 namespace Jinkong.Version
 {
-    public interface IVersion : ITransient
+    [Transient]
+    public interface IVersion
     {
         /// <summary>
         /// 优先级

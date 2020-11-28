@@ -3,12 +3,13 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Jinkong.SecurityProxyClient;
+using Jinkong.Utils;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Shashlik.Utils.Extensions;
-using Shashlik.Utils.Helpers;
 
 namespace Jinkong.SecurityProxyApi.Controllers
 {
@@ -18,37 +19,35 @@ namespace Jinkong.SecurityProxyApi.Controllers
     {
         public RootController(IOptions<Settings> options)
         {
-            settings = options.Value;
+            Settings = options.Value;
         }
 
-        Settings settings { get; }
+        private Settings Settings { get; }
 
         [HttpPost("/proxy")]
         [AllowAnonymous]
         public async Task<IActionResult> Proxy(RequestObj requestObj, [FromServices] ILogger<RootController> logger)
         {
-            if (!settings.IpWhite.IsNullOrWhiteSpace() && settings.IpWhite != "*"
-                                                       && !settings.IpWhiteList.Value.Contains(HttpContext.Connection
+            if (!Settings.IpWhite.IsNullOrWhiteSpace() && Settings.IpWhite != "*"
+                                                       && !Settings.IpWhiteList.Value.Contains(HttpContext.Connection
                                                            .RemoteIpAddress.ToString()))
-                return BadRequest($"invalid ip address.");
+                return BadRequest("invalid ip address.");
 
-            if (!settings.AllowTargets.IsNullOrWhiteSpace() && settings.AllowTargets != "*")
+            if (!Settings.AllowTargets.IsNullOrWhiteSpace() && Settings.AllowTargets != "*")
             {
                 var uri = new Uri(requestObj.TargetUrl.Trim());
 
-                if (!settings.AllowTargetList.Value.Contains($"{uri.Scheme}://{uri.Authority}",
+                if (!Settings.AllowTargetList.Value.Contains($"{uri.Scheme}://{uri.Authority}",
                     StringComparer.OrdinalIgnoreCase))
                 {
-                    return BadRequest($"invalid target.");
+                    return BadRequest("invalid target.");
                 }
             }
 
             try
             {
-                var uri = new Uri(requestObj.TargetUrl);
-
-                var decodedStr = SecretHelper.Decrypt(requestObj.Body, settings.LocalPrivateKey, requestObj.Encode);
-                if (!SecretHelper.Verify(decodedStr, requestObj.Signature, settings.RemotePublicKey, requestObj.Encode))
+                var decodedStr = SecretHelper.Decrypt(requestObj.Body, Settings.LocalPrivateKey, Encoding.GetEncoding(requestObj.Encode));
+                if (!SecretHelper.Verify(decodedStr, requestObj.Signature, Settings.RemotePublicKey, Encoding.GetEncoding(requestObj.Encode)))
                     return BadRequest("signature error.");
                 var method = requestObj.Method ?? RestSharp.Method.POST;
                 if (decodedStr == "empty")
@@ -64,21 +63,19 @@ namespace Jinkong.SecurityProxyApi.Controllers
                     return BadRequest(res.Content);
                 }
 
-                using (var ms = new MemoryStream(res.RawBytes))
+                await using var ms = new MemoryStream(res.RawBytes);
+                string response;
+                if (res.RawBytes.Length == 0)
+                    response = "empty";
+                else
+                    response = await ms.ReadToStringAsync(Encoding.GetEncoding(requestObj.Encode));
+                var resBody = SecretHelper.Encrypt(response, Settings.RemotePublicKey, Encoding.GetEncoding(requestObj.Encode));
+                var resSignature = SecretHelper.Sign(response, Settings.LocalPrivateKey, Encoding.GetEncoding(requestObj.Encode));
+                return new JsonResult(new ResponseObj
                 {
-                    string response;
-                    if (res.RawBytes.Length == 0)
-                        response = "empty";
-                    else
-                        response = ms.ReadToString(Encoding.GetEncoding(requestObj.Encode));
-                    var resBody = SecretHelper.Encrypt(response, settings.RemotePublicKey, requestObj.Encode);
-                    var resSignture = SecretHelper.Sign(response, settings.LocalPrivateKey, requestObj.Encode);
-                    return new JsonResult(new ResponseObj
-                    {
-                        Body = resBody,
-                        Signature = resSignture
-                    });
-                }
+                    Body = resBody,
+                    Signature = resSignature
+                });
             }
             catch (Exception ex)
             {
@@ -88,7 +85,7 @@ namespace Jinkong.SecurityProxyApi.Controllers
 
         [HttpGet("/ip")]
         [AllowAnonymous]
-        public string ip()
+        public string Ip()
         {
             return HttpContext.Connection.RemoteIpAddress.ToString();
         }

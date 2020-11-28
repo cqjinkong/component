@@ -1,16 +1,21 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-    <Import Project="..\..\common.xml"/>
+    <Import Project="..\..\common.xml" />
     <PropertyGroup>
         <TargetFramework>netstandard2.1</TargetFramework>
     </PropertyGroup>
 
 
     <ItemGroup>
-        <PackageReference Include="Shashlik.AutoMapper" Version="0.1.0-preview-*"/>
-        <PackageReference Include="Shashlik.Cap" Version="0.1.0-preview-*"/>
-        <PackageReference Include="Shashlik.Pager" Version="0.1.0-preview-*"/>
-        <PackageReference Include="Shashlik.Kernel" Version="0.1.0-preview-*"/>
+        <PackageReference Include="Shashlik.AutoMapper" Version="1.0.0-rc2" />
+        <PackageReference Include="Shashlik.Cap" Version="1.0.0-rc2" />
+        <PackageReference Include="Shashlik.Kernel" Version="1.0.0-rc2" />
+    </ItemGroup>
+
+
+    <ItemGroup>
+      <ProjectReference Include="..\Jinkong.Pager\Jinkong.Pager.csproj" />
+      <ProjectReference Include="..\Jinkong.Utils\Jinkong.Utils.csproj" />
     </ItemGroup>
 
 </Project>

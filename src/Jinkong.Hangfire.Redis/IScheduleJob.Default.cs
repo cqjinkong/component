@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Linq.Expressions;
+using Shashlik.Kernel.Dependency;
 
 namespace Jinkong.Hangfire.Redis
 {
-    public class DefaultScheduleJob : IScheduleJob, Shashlik.Kernel.Dependency.ISingleton
+    [Singleton]
+    public class DefaultScheduleJob : IScheduleJob
     {
         public void Execute(Expression<Action> action, TimeSpan delay)
         {

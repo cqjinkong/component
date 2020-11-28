@@ -6,6 +6,7 @@ using Senparc.Weixin.TenPay.V3;
 using System;
 using System.Threading.Tasks;
 using System.Web;
+using Jinkong.Utils;
 
 namespace Jinkong.Wx
 {

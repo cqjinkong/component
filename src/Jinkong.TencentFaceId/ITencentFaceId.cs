@@ -1,6 +1,6 @@
 ﻿using TencentCloud.Faceid.V20180301.Models;
 
-namespace TencentFaceId.Sdk
+namespace Jinkong.TencentFaceId
 {
     /// <summary>
     /// 腾讯云cos文件操作接口
@@ -17,6 +17,7 @@ namespace TencentFaceId.Sdk
         /// 获取人身核验信息
         /// </summary>
         /// <param name="bizToken"></param>
+        /// <param name="ruleId"></param>
         /// <returns></returns>
         DetectInfo GetDetectInfo(string bizToken, string ruleId = "");
 

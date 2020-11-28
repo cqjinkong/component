@@ -1,18 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿// ReSharper disable IdentifierTypo
+// ReSharper disable ClassNeverInstantiated.Global
+// ReSharper disable UnusedAutoPropertyAccessor.Global
 
-namespace TencentFaceId.Sdk
+// ReSharper disable UnusedMember.Global
+namespace Jinkong.TencentFaceId
 {
     public class DetectInfo
     {
-        // ReSharper disable All 
-#pragma warning disable IDE1006 // 命名样式
-
         /// <summary>
         /// 原始内容
         /// </summary>
         public string DetectInfoContent { get; set; }
+
         public _Text Text { get; set; }
 
         public _IdCardData IdCardData { get; set; }
@@ -58,8 +57,5 @@ namespace TencentFaceId.Sdk
         {
             public string LivenessVideo { get; set; }
         }
-
-#pragma warning restore IDE1006 // 命名样式
-        // ReSharper restore All 
     }
 }

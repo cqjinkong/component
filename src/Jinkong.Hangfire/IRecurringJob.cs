@@ -6,7 +6,8 @@ namespace Jinkong.Hangfire
     /// <summary>
     /// 循环任务,单例
     /// </summary>
-    public interface IRecurringJob : ISingleton, IDisposable
+    [Singleton]
+    public interface IRecurringJob : IDisposable
     {
         /// <summary>
         /// cron表达式,注意设置的时区

@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Net;
+using Jinkong.Utils;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Senparc.CO2NET.HttpUtility;
 using Senparc.Weixin.RegisterServices;
 using Shashlik.Kernel;
-using Shashlik.Kernel.Autowired;
-using Shashlik.Utils;
 using Shashlik.Utils.Extensions;
 
 namespace Jinkong.Wx

@@ -5,8 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Shashlik.Response" Version="0.1.0-preview-*" />
-    <PackageReference Include="Shashlik.Cap" Version="0.1.0-preview-*" />
+    <PackageReference Include="Shashlik.Response" Version="1.0.0-rc2" />
+    <PackageReference Include="Shashlik.Cap" Version="1.0.0-rc2" />
   </ItemGroup>
 
   <ItemGroup>

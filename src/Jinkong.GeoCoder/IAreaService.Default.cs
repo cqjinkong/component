@@ -3,16 +3,18 @@ using System.Linq;
 using Microsoft.Extensions.Options;
 using System;
 using System.Threading.Tasks;
+using Jinkong.Utils;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Linq;
+using Shashlik.Kernel.Dependency;
 using Shashlik.Utils.Extensions;
-using Shashlik.Utils.Helpers;
 
 namespace Jinkong.GeoCoder
 {
-    class DefaultAreaService : IAreaService, Shashlik.Kernel.Dependency.ISingleton
+    [Singleton]
+    internal class DefaultAreaService : IAreaService
     {
         private static decimal _latitudeDistanceInKilometersDivisor = 111.045M;
 
@@ -221,9 +223,7 @@ namespace Jinkong.GeoCoder
             {
                 AreaItems province = new AreaItems
                 {
-                    Value = provinceItem.Key,
-                    Label = provinceItem.Value,
-                    Children = new Dictionary<string, AreaItems>()
+                    Value = provinceItem.Key, Label = provinceItem.Value, Children = new Dictionary<string, AreaItems>()
                 };
 
                 if (!all.ContainsKey(provinceItem.Key))
@@ -231,10 +231,7 @@ namespace Jinkong.GeoCoder
                 var cities = all[provinceItem.Key];
                 foreach (var cityItem in cities)
                 {
-                    AreaItems city = new AreaItems
-                    {
-                        Value = cityItem.Key, Label = cityItem.Value, Children = new Dictionary<string, AreaItems>()
-                    };
+                    AreaItems city = new AreaItems {Value = cityItem.Key, Label = cityItem.Value, Children = new Dictionary<string, AreaItems>()};
 
                     if (!all.ContainsKey(cityItem.Key))
                         continue;

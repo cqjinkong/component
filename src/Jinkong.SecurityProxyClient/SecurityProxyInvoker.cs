@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 using System.Threading.Tasks;
-using Shashlik.Utils.Helpers;
+using Jinkong.Utils;
 
 namespace Jinkong.SecurityProxyClient
 {

@@ -7,7 +7,8 @@ using Shashlik.Kernel.Dependency;
 
 namespace Jinkong.AliVideo
 {
-    public class AliyunVod : ITransient
+    [Transient]
+    public class AliyunVod
     {
         private AliVideoOptions Options { get; }
         private DefaultAcsClient Client { get; }
@@ -37,7 +38,7 @@ namespace Jinkong.AliVideo
         /// <returns></returns>
         public VideoUploadDto CreateUploadVideo(string title, string name)
         {
-            var request = new CreateUploadVideoRequest { Title = title, FileName = name, RegionId = RegionId };
+            var request = new CreateUploadVideoRequest {Title = title, FileName = name, RegionId = RegionId};
             var response = Client.GetAcsResponse(request);
             return new VideoUploadDto()
             {
@@ -67,7 +68,7 @@ namespace Jinkong.AliVideo
         /// <returns></returns>
         public VideoUploadDto RefreshUpload(string videoId)
         {
-            var request = new RefreshUploadVideoRequest { VideoId = videoId, RegionId = RegionId };
+            var request = new RefreshUploadVideoRequest {VideoId = videoId, RegionId = RegionId};
             var response = Client.GetAcsResponse(request);
             return new VideoUploadDto()
             {

@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
+using Shashlik.Kernel.Dependency;
+
 // ReSharper disable CheckNamespace
 
 namespace Sbt.Invoice.Service
 {
-    public interface ITimer : Shashlik.Kernel.Dependency.ITransient, IDisposable
+    [Transient]
+    public interface ITimer : IDisposable
     {
         TimeSpan Interval { get; }
 

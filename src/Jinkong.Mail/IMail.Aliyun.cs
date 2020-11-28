@@ -17,20 +17,23 @@ namespace Jinkong.Mail
     [ConditionOnProperty(typeof(bool), "Jinkong.Mail.AliyunDm.Enable", true, DefaultValue = true)]
     [ConditionDependsOn(typeof(IDistributedCache))]
     [Order(210)]
-    public class AliyunMail : IMail, ISingleton
+    [Singleton]
+    public class AliyunMail : IMail
     {
         private AliyunDmOptions Options { get; }
         private IAcsClient Client { get; }
         private IDistributedCache Cache { get; }
         private ILogger<AliyunMail> Logger { get; }
+        private IMailLimit Limit { get; }
 
-        public AliyunMail(IOptions<AliyunDmOptions> options, ILogger<AliyunMail> logger, IDistributedCache cache)
+        public AliyunMail(IOptions<AliyunDmOptions> options, ILogger<AliyunMail> logger, IDistributedCache cache, IMailLimit limit)
         {
             Options = options.Value;
             Logger = logger;
             IClientProfile profile = DefaultProfile.GetProfile("cn-hangzhou", Options.AccessId, Options.AccessKey);
             Client = new DefaultAcsClient(profile);
             Cache = cache;
+            Limit = limit;
         }
 
         private const string CachePrefix = "MAIL_LIMIT:";
@@ -63,14 +66,14 @@ namespace Jinkong.Mail
         {
             if (!LimitCheck(address, subject))
             {
-                Logger.LogError($"次数限制，发送失败 address:{address},subject:{subject},content:{content}");
+                Logger.LogError($"次数限制，发送失败 address:{address}, subject:{subject}, content:{content}");
                 return;
             }
 
             try
             {
                 Send(address, subject, content);
-                UpdateLimit(address, subject);
+                Limit.SendDone(address, subject);
             }
             catch (ClientException e)
             {
@@ -81,70 +84,7 @@ namespace Jinkong.Mail
 
         public bool LimitCheck(string address, string subject)
         {
-            var limit = Options.Limits?.FirstOrDefault(r => r.Subject == subject);
-            string key = CachePrefix + address + "_" + subject;
-            var now = DateTime.Now.GetLongDate();
-            var day = DateTime.Now.Day;
-            var hour = DateTime.Now.Hour;
-            var minute = DateTime.Now.Minute;
-            var second = DateTime.Now.Second;
-
-            if (limit != null && (limit.DayLimitCount.HasValue || limit.HourLimitCount.HasValue ||
-                                  limit.MinuteLimitCount.HasValue))
-            {
-                var smsLimit = Cache.GetObjectWithJson<MailLimit>(key);
-                if (smsLimit == null)
-                    return true;
-
-                if (smsLimit.Day != day)
-                    return true;
-
-                if (limit.DayLimitCount.HasValue && smsLimit.Records.Count >= limit.DayLimitCount)
-                {
-                    return false;
-                }
-
-                if (limit.HourLimitCount.HasValue &&
-                    smsLimit.Records.Count(r => r.Hour == hour) >= limit.HourLimitCount)
-                {
-                    return false;
-                }
-
-                if (limit.MinuteLimitCount.HasValue &&
-                    smsLimit.Records.Count(r => r.Hour == hour && r.Minute == minute) >= limit.MinuteLimitCount)
-                {
-                    return false;
-                }
-            }
-
-            return true;
-        }
-
-        private void UpdateLimit(string address, string subject)
-        {
-            var limit = Options.Limits?.FirstOrDefault(r => r.Subject == subject);
-            if (limit == null)
-                return;
-            string key = CachePrefix + address + "_" + subject;
-            var day = DateTime.Now.Day;
-            var hour = DateTime.Now.Hour;
-            var minute = DateTime.Now.Minute;
-            var second = DateTime.Now.Second;
-
-            var mailLimit = Cache.GetObjectWithJson<MailLimit>(key);
-            if (mailLimit == null)
-                mailLimit = new MailLimit
-                {
-                    Day = day,
-                    Records = new List<MailLimit.Record>()
-                };
-            mailLimit.Records.Add(new MailLimit.Record
-            {
-                Hour = hour,
-                Minute = minute
-            });
-
-            Cache.SetObjectWithJson(key, mailLimit, DateTimeOffset.Now.Date.AddDays(1));
+            return Limit.CanSend(address, subject);
         }
     }
 }

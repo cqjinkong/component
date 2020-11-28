@@ -3,12 +3,14 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Jinkong.Utils;
 using Newtonsoft.Json;
-using Shashlik.Utils.Helpers;
+using Shashlik.Kernel.Dependency;
 
 namespace Jinkong.Bank
 {
-    class DefaultBankService : IBankService, Shashlik.Kernel.Dependency.ISingleton
+    [Singleton]
+    internal class DefaultBankService : IBankService
     {
         public DefaultBankService(IOptions<BankOptions> options)
         {

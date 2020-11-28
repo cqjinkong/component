@@ -1,16 +1,11 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Web;
-using Jinkong.Utils.Extensions;
-using TencentCloud.Ecm.V20190719.Models;
+﻿using Shashlik.Kernel.Attributes;
 
-namespace TencentFaceId.Sdk
+namespace Jinkong.TencentFaceId
 {
     /// <summary>
     /// 腾讯云对象存储cos配置
     /// </summary>
+    [AutoOptions("Jinkong.FaceId")]
     public class TencentFaceIdOptions
     {
         /// <summary>
@@ -19,7 +14,7 @@ namespace TencentFaceId.Sdk
         public string SecretId { get; set; }
 
         /// <summary>
-        /// appkey
+        /// SecretKey
         /// </summary>
         public string SecretKey { get; set; }
 
@@ -28,6 +23,8 @@ namespace TencentFaceId.Sdk
         /// </summary>
         public string Region { get; set; }
 
-        public string RuleId { get;set; }
+        public string RuleId { get; set; }
+
+        public bool UseEmpty { get; set; }
     }
 }

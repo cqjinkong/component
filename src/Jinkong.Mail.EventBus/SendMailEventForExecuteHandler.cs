@@ -6,9 +6,11 @@ using Shashlik.Kernel.Dependency;
 
 namespace Jinkong.Mail.EventBus
 {
-    public class SendMailEventForExecuteHandler : IEventHandler<SendMailEvent>, ITransient
+    [Transient]
+    public class SendMailEventForExecuteHandler : IEventHandler<SendMailEvent>
     {
         private IMail Mail { get; }
+
         public SendMailEventForExecuteHandler(IMail mail)
         {
             Mail = mail;

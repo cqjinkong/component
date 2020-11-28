@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Jinkong.Utils;
 using Shashlik.Utils;
 using Shashlik.Utils.Extensions;
 // ReSharper disable CheckNamespace

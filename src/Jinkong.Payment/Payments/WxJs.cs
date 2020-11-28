@@ -10,7 +10,8 @@ using Shashlik.Utils.Extensions;
 
 namespace Jinkong.Payment
 {
-    public class WxJs : WxBase, ITransient
+    [Transient]
+    public class WxJs : WxBase
     {
         public WxJs(IServiceProvider serviceProvider) : base(serviceProvider)
         {

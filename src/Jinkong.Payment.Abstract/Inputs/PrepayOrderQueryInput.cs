@@ -1,5 +1,5 @@
 ﻿using System;
-using Shashlik.Pager;
+using Jinkong.Pager;
 
 // ReSharper disable CheckNamespace
 

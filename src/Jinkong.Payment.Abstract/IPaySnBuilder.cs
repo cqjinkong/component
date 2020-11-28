@@ -4,7 +4,8 @@
 
 namespace Jinkong.Payment
 {
-    public interface IPaySnBuilder : ISingleton
+    [Singleton]
+    public interface IPaySnBuilder
     {
         string BuildSn();
     }

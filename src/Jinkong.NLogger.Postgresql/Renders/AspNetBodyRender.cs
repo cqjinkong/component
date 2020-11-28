@@ -4,9 +4,10 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using NLog;
 using NLog.LayoutRenderers;
+using Shashlik.Kernel.Dependency;
 using Shashlik.Utils.Extensions;
 
-namespace Jinkong.NLogger.Mysql.Renders
+namespace Jinkong.NLogger.Postgresql.Renders
 {
     [LayoutRenderer("aspnet-request-body")]
     public class AspNetBodyRender : NLog.Web.LayoutRenderers.AspNetLayoutRendererBase
@@ -22,11 +23,11 @@ namespace Jinkong.NLogger.Mysql.Renders
         }
     }
 
-    public class AspNetBody : Shashlik.Kernel.Dependency.IScoped
+    [Scoped]
+    public class AspNetBody
     {
         public AspNetBody(IHttpContextAccessor httpContextAccessor)
         {
-
             body = new Lazy<string>(() =>
             {
                 try
@@ -39,8 +40,8 @@ namespace Jinkong.NLogger.Mysql.Renders
                         return null;
 
                     if (!context.Request.Method.Equals("post", StringComparison.OrdinalIgnoreCase)
-                            && !context.Request.Method.Equals("put", StringComparison.OrdinalIgnoreCase)
-                            && !context.Request.Method.Equals("patch", StringComparison.OrdinalIgnoreCase))
+                        && !context.Request.Method.Equals("put", StringComparison.OrdinalIgnoreCase)
+                        && !context.Request.Method.Equals("patch", StringComparison.OrdinalIgnoreCase))
                         return null;
 
                     if (context.Request.Body == null)
@@ -58,7 +59,6 @@ namespace Jinkong.NLogger.Mysql.Renders
                     return null;
                 }
             });
-
         }
 
         private Lazy<string> body { get; }

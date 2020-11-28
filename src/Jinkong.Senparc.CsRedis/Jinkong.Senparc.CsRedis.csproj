@@ -12,6 +12,6 @@
         <PackageReference Include="CSRedisCore" Version="3.6.5" />
         <PackageReference Include="Senparc.CO2NET" Version="1.3.200" />
         <PackageReference Include="Senparc.Weixin" Version="6.7.600" />
-        <PackageReference Include="Shashlik.Redis" Version="0.1.0-preview-*" />
+        <PackageReference Include="Shashlik.Redis" Version="1.0.0-rc2" />
     </ItemGroup>
 </Project>

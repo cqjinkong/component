@@ -18,7 +18,8 @@ namespace Jinkong.Mail.Cap
         void Send(string address, string subject, string content);
     }
 
-    public class DefaultMailSender : IMailSender, ISingleton
+    [Singleton]
+    public class DefaultMailSender : IMailSender
     {
         private IEventPublisher EventPublisher { get; }
         private IMail Mail { get; }

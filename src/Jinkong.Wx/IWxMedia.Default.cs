@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
+using Jinkong.Utils;
 using Shashlik.Utils.Extensions;
 using Shashlik.Utils.Helpers;
 
@@ -10,16 +11,16 @@ namespace Jinkong.Wx
     {
         public DefaultWxMedia(IWxAccessToken wxSettings)
         {
-            this.wxSettings = wxSettings;
+            this.WxSettings = wxSettings;
         }
 
-        IWxAccessToken wxSettings { get; }
+        private IWxAccessToken WxSettings { get; }
 
         public async Task<WxMediaFile> GetFile(string mediaId)
         {
             // api doc:https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1444738727
 
-            var token = wxSettings.DefaultMpToken;
+            var token = WxSettings.DefaultMpToken;
             string url = $"https://api.weixin.qq.com/cgi-bin/media/get?access_token={token}&media_id={mediaId}";
 
             var res = await HttpHelper.GetForOriginResponse(url);
