@@ -1,4 +1,5 @@
-﻿using System.Security.Cryptography;
+﻿using System;
+using System.Security.Cryptography;
 using System.Text;
 using Shashlik.Utils.Helpers;
 
@@ -7,7 +8,7 @@ namespace Jinkong.SecurityProxyClient
     /// <summary>
     /// 加解密/签名/验签
     /// <p>
-    /// 公钥X509 V3;私钥pkcs8/pem
+    /// 公钥同时支持X509和PEM, 私钥支持PEM.Pkcs1和PEM.Pkcs8
     /// </p>
     /// </summary>
     public static class SecretHelper
@@ -21,8 +22,25 @@ namespace Jinkong.SecurityProxyClient
         /// <returns></returns>
         public static string Encrypt(string data, string publicKey, Encoding encoding)
         {
-            using var cer = RSAHelper.LoadX509FromPublicCertificate(publicKey);
-            return ((RSA)cer.PublicKey.Key).EncryptBigData(data, RSAEncryptionPadding.Pkcs1, encoding);
+            if (string.IsNullOrWhiteSpace(data)) throw new ArgumentException("Value cannot be null or whitespace.", nameof(data));
+            if (string.IsNullOrWhiteSpace(publicKey)) throw new ArgumentException("Value cannot be null or whitespace.", nameof(publicKey));
+
+            // X509
+            if (publicKey.Contains("BEGIN CERTIFICATE"))
+            {
+                using var cer = RSAHelper.LoadX509FromPublicCertificate(publicKey);
+                return ((RSA) cer.PublicKey.Key).EncryptBigData(data, RSAEncryptionPadding.Pkcs1, encoding);
+            }
+            // rsa
+            else if (publicKey.Contains("BEGIN PUBLIC KEY"))
+            {
+                using var rsa = RSAHelper.FromPem(publicKey);
+                return rsa.EncryptBigData(data, RSAEncryptionPadding.Pkcs1, encoding);
+            }
+            else
+            {
+                throw new ArgumentException(nameof(publicKey));
+            }
         }
 
         /// <summary>
@@ -34,6 +52,8 @@ namespace Jinkong.SecurityProxyClient
         /// <returns></returns>
         public static string Decrypt(string data, string privateKey, Encoding encoding)
         {
+            if (string.IsNullOrWhiteSpace(data)) throw new ArgumentException("Value cannot be null or whitespace.", nameof(data));
+            if (string.IsNullOrWhiteSpace(privateKey)) throw new ArgumentException("Value cannot be null or whitespace.", nameof(privateKey));
             if (!privateKey.Contains("PRIVATE KEY"))
             {
                 var sb = new StringBuilder();
@@ -56,6 +76,8 @@ namespace Jinkong.SecurityProxyClient
         /// <returns></returns>
         public static string Sign(string data, string privateKey, Encoding encoding)
         {
+            if (string.IsNullOrWhiteSpace(data)) throw new ArgumentException("Value cannot be null or whitespace.", nameof(data));
+            if (string.IsNullOrWhiteSpace(privateKey)) throw new ArgumentException("Value cannot be null or whitespace.", nameof(privateKey));
             if (!privateKey.Contains("PRIVATE KEY"))
             {
                 var sb = new StringBuilder();
@@ -79,15 +101,38 @@ namespace Jinkong.SecurityProxyClient
         /// <returns></returns>
         public static bool Verify(string data, string signature, string publicKey, Encoding encoding)
         {
-            using var cer = RSAHelper.LoadX509FromPublicCertificate(publicKey);
-            return ((RSA)cer.PublicKey.Key)
-                .VerifySignData(
+            if (string.IsNullOrWhiteSpace(data)) throw new ArgumentException("Value cannot be null or whitespace.", nameof(data));
+            if (string.IsNullOrWhiteSpace(publicKey)) throw new ArgumentException("Value cannot be null or whitespace.", nameof(publicKey));
+
+            // X509
+            if (publicKey.Contains("BEGIN CERTIFICATE"))
+            {
+                using var cer = RSAHelper.LoadX509FromPublicCertificate(publicKey);
+                return ((RSA) cer.PublicKey.Key)
+                    .VerifySignData(
+                        data,
+                        signature,
+                        HashAlgorithmName.MD5,
+                        RSASignaturePadding.Pkcs1,
+                        encoding
+                    );
+            }
+            // rsa
+            else if (publicKey.Contains("BEGIN PUBLIC KEY"))
+            {
+                using var rsa = RSAHelper.FromPem(publicKey);
+                return rsa.VerifySignData(
                     data,
                     signature,
                     HashAlgorithmName.MD5,
                     RSASignaturePadding.Pkcs1,
                     encoding
                 );
+            }
+            else
+            {
+                throw new ArgumentException(nameof(publicKey));
+            }
         }
     }
 }
