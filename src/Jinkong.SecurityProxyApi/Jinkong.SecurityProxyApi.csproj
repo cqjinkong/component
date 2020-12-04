@@ -17,6 +17,7 @@
     </ItemGroup>
 
     <ItemGroup>
+        <PackageReference Include="NetEscapades.Configuration.Yaml" Version="2.0.1" />
         <PackageReference Include="Shashlik.Utils" Version="1.0.0-rc2" />
     </ItemGroup>
 

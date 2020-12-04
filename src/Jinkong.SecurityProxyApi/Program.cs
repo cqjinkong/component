@@ -1,5 +1,7 @@
+using System.IO;
 using System.Text;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 
 namespace Jinkong.SecurityProxyApi
@@ -14,9 +16,15 @@ namespace Jinkong.SecurityProxyApi
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
+                .ConfigureAppConfiguration((host, config) =>
                 {
-                    webBuilder.UseStartup<Startup>();
-                });
+                    var env = host.HostingEnvironment;
+                    config
+                        .AddYamlFile("appsettings.yaml", true, true)
+                        .AddYamlFile($"appsettings.{env.EnvironmentName}.yaml", true, true)
+                        .AddEnvironmentVariables()
+                        ;
+                })
+                .ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); });
     }
 }
